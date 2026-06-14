@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formação RCI - Gioia Renova</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#2aa8a0;--teal-dark:#1d7d77;--teal-light:#e6f7f6;--gold:#c9982a;--dark:#1a2332;--muted:#6b7280;--bg:#f0fafa;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);}
+header{background:linear-gradient(135deg,#1a2332,#1d3a4a);padding:14px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:99;}
+.logo{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--gold));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;flex-shrink:0;}
+.brand{color:#fff;font-weight:700;font-size:16px;}
+.brand-sub{color:rgba(255,255,255,0.5);font-size:10px;letter-spacing:1.5px;}
+.badge{margin-left:auto;background:rgba(42,168,160,0.2);border:1px solid rgba(42,168,160,0.4);border-radius:20px;padding:4px 12px;color:#5dd8d0;font-size:11px;}
+.hero{background:linear-gradient(160deg,#1d3a4a,#1a2332);color:#fff;padding:36px 20px;text-align:center;}
+.hero-tag{display:inline-block;background:rgba(42,168,160,0.2);border:1px solid rgba(42,168,160,0.4);color:#5dd8d0;border-radius:20px;padding:4px 14px;font-size:11px;letter-spacing:1.5px;margin-bottom:14px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(22px,6vw,34px);line-height:1.25;margin-bottom:10px;}
+.hero h1 span{color:var(--teal);}
+.hero p{color:rgba(255,255,255,0.6);font-size:13px;max-width:420px;margin:0 auto 24px;line-height:1.65;}
+.stats{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
+.stat-num{color:var(--teal);font-size:22px;font-weight:700;}
+.stat-lbl{color:rgba(255,255,255,0.45);font-size:11px;text-transform:uppercase;letter-spacing:1px;}
+.prog-wrap{background:#fff;border-bottom:1px solid #d1f0ee;padding:12px 20px;}
+.prog-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;gap:12px;}
+.prog-lbl{font-size:12px;color:var(--muted);white-space:nowrap;}
+.prog-bg{flex:1;height:7px;background:#e5e7eb;border-radius:10px;overflow:hidden;}
+.prog-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--teal),#4a9bbe);border-radius:10px;transition:width .7s ease;}
+.prog-pct{font-size:13px;font-weight:600;color:var(--teal);min-width:34px;text-align:right;}
+.main{max-width:860px;margin:0 auto;padding:20px 14px 60px;}
+.notice{background:#fffbeb;border:1.5px solid #f0d080;border-radius:12px;padding:14px 16px;margin-bottom:20px;display:flex;gap:10px;align-items:flex-start;}
+.notice-txt{font-size:13px;color:#78580e;line-height:1.6;}
+.sec-title{font-size:18px;font-weight:700;color:var(--dark);margin-bottom:14px;}
+.mod{background:#fff;border-radius:12px;border:1.5px solid #d1f0ee;box-shadow:0 2px 12px rgba(42,168,160,.08);margin-bottom:10px;overflow:hidden;}
+.mod.done{border-color:var(--teal);}
+.mod-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;-webkit-user-select:none;}
+.mod-n{width:36px;height:36px;border-radius:50%;background:var(--teal-light);display:flex;align-items:center;justify-content:center;color:var(--teal-dark);font-weight:700;font-size:14px;flex-shrink:0;}
+.mod.done .mod-n{background:var(--teal);color:#fff;}
+.mod-info{flex:1;min-width:0;}
+.mod-title{font-weight:600;font-size:14px;color:var(--dark);line-height:1.3;}
+.mod-meta{display:flex;gap:10px;margin-top:3px;flex-wrap:wrap;}
+.mtag{font-size:11px;color:#9ca3af;}
+.mtag.g{color:var(--teal);}
+.mod-act{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.btn-v{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;border:none;border-radius:20px;padding:5px 13px;font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-block;}
+.btn-v.off{background:#d1d5db;cursor:default;pointer-events:none;}
+.chev{color:#9ca3af;font-size:18px;transition:transform .3s;display:inline-block;}
+.mod.open .chev{transform:rotate(180deg);}
+.mod-body{display:none;border-top:1px solid #e8f8f7;padding:20px 18px 22px;background:#f9fefe;}
+.mod.open .mod-body{display:block;}
+h2.ch{font-family:'Playfair Display',serif;font-size:17px;color:var(--teal-dark);margin:20px 0 10px;border-bottom:2px solid var(--teal-light);padding-bottom:6px;}
+h3.ch{font-size:14px;font-weight:700;color:var(--dark);margin:16px 0 8px;}
+p.ch{font-size:13.5px;color:#374151;line-height:1.8;margin-bottom:10px;}
+ul.ch{list-style:none;margin:8px 0 12px;padding:0;display:flex;flex-direction:column;gap:5px;}
+ul.ch li{font-size:13.5px;color:#374151;display:flex;gap:8px;line-height:1.6;}
+ul.ch li::before{content:"›";color:var(--teal);font-size:16px;flex-shrink:0;}
+ol.ch{margin:8px 0 12px 20px;display:flex;flex-direction:column;gap:6px;}
+ol.ch li{font-size:13.5px;color:#374151;line-height:1.6;}
+.box-t{background:var(--teal-light);border-left:4px solid var(--teal);border-radius:0 8px 8px 0;padding:12px 14px;margin:12px 0;font-size:13px;color:var(--teal-dark);line-height:1.7;}
+.box-a{background:#fff8e1;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 14px;margin:12px 0;font-size:13px;color:#7a5c10;line-height:1.7;}
+.box-r{background:#fff0f0;border-left:4px solid #e05555;border-radius:0 8px 8px 0;padding:12px 14px;margin:12px 0;font-size:13px;color:#8b1a1a;line-height:1.7;}
+table.ch{width:100%;border-collapse:collapse;margin:12px 0;font-size:12.5px;}
+table.ch th{background:var(--teal);color:#fff;padding:8px 10px;text-align:left;}
+table.ch td{padding:7px 10px;border-bottom:1px solid #e0f2f1;color:#374151;vertical-align:top;}
+table.ch tr:nth-child(even) td{background:#f0fafa;}
+.vbox{margin-top:16px;background:#1a2332;border-radius:10px;padding:18px;text-align:center;color:rgba(255,255,255,.4);font-size:13px;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.vbox-ico{width:40px;height:40px;background:rgba(42,168,160,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.done-row{margin-top:18px;display:flex;align-items:center;gap:10px;border-top:1px solid #e8f8f7;padding-top:14px;}
+.btn-done{background:transparent;border:1.5px solid var(--teal);color:var(--teal);border-radius:20px;padding:6px 16px;font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.btn-done:hover{background:var(--teal);color:#fff;}
+.mod.done .btn-done{background:var(--teal);color:#fff;}
+.done-hint{font-size:12px;color:#9ca3af;}
+.cert-box{text-align:center;padding:32px 20px;background:#fff;border-radius:14px;border:1.5px solid #d1f0ee;margin-top:24px;}
+.cert-ico{width:64px;height:64px;background:linear-gradient(135deg,var(--teal),#4a9bbe);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 14px;}
+.cert-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--dark);margin-bottom:8px;}
+.cert-desc{font-size:13px;color:var(--muted);max-width:340px;margin:0 auto 20px;line-height:1.6;}
+.btn-cert{background:#d1d5db;color:#fff;border:none;border-radius:25px;padding:11px 26px;font-size:14px;font-weight:600;cursor:default;opacity:.6;font-family:'DM Sans',sans-serif;}
+.btn-cert.on{background:linear-gradient(135deg,var(--gold),#b8871e);cursor:pointer;opacity:1;}
+footer{background:var(--dark);color:rgba(255,255,255,.4);text-align:center;padding:18px;font-size:12px;}
+footer span{color:var(--teal);}
+
+.yt-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:9999;align-items:center;justify-content:center;flex-direction:column;}
+.yt-modal.active{display:flex;}
+.yt-modal-inner{position:relative;width:95%;max-width:720px;}
+.yt-modal-inner iframe{width:100%;aspect-ratio:16/9;border:none;border-radius:10px;display:block;}
+.yt-modal-close{color:#fff;font-size:32px;margin-bottom:12px;cursor:pointer;align-self:flex-end;line-height:1;background:none;border:none;font-family:sans-serif;}
+</style>
+</head>
+<body>
+
+<div class="yt-modal" id="ytModal">
+  <button class="yt-modal-close" onclick="closeModal()">&#10005;</button>
+  <div class="yt-modal-inner">
+    <iframe id="ytFrame" src="" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
+
+<header>
+  <div class="logo">G</div>
+  <div><div class="brand">Gioia Renova</div><div class="brand-sub">FORMACAO PROFISSIONAL</div></div>
+
+</header>
+<div class="hero">
+  <div class="hero-tag">FORMACAO CERTIFICADA</div>
+  <h1>Reprocessamento<br><span>Cronológico Integrativo</span></h1>
+  <p>Neurociencia aplicada ao processamento de traumas. Torne-se um Terapeuta Integrativo certificado.</p>
+  <div class="stats">
+    <div><div class="stat-num">8</div><div class="stat-lbl">Módulos</div></div>
+    <div><div class="stat-num">8</div><div class="stat-lbl">Videoaulas</div></div>
+    <div><div class="stat-num">45</div><div class="stat-lbl">Paginas</div></div>
+    <div><div class="stat-num">10h</div><div class="stat-lbl">Prática</div></div>
+  </div>
+</div>
+<div class="prog-wrap">
+  <div class="prog-inner">
+    <span class="prog-lbl">Seu progresso</span>
+    <div class="prog-bg"><div class="prog-fill" id="pFill"></div></div>
+    <span class="prog-pct" id="pPct">0%</span>
+  </div>
+</div>
+<div class="main">
+
+<div class="sec-title">Conteudo do Curso</div>
+<!-- MODULO 1 -->
+<div class="mod open" id="m0">
+<div class="mod-head" onclick="tog(0)">
+  <div class="mod-n" id="n0">1</div>
+  <div class="mod-info">
+    <div class="mod-title">Apresentação e Fundamentos Legais</div>
+    <div class="mod-meta"><span class="mtag">&#127916; ~8 min</span><span class="mtag">&#128196; Pags. 1-3</span><span class="mtag g" id="dl0" style="display:none">&#10003; Concluído</span></div>
+  </div>
+  <div class="mod-act">
+    
+    <span class="chev">&#8964;</span>
+  </div>
+</div>
+<div class="mod-body">
+<div class="box-a"><strong>IMPORTANTE:</strong> Este curso capacita para atuação como Terapeuta Integrativo. NAO autoriza exercicio de profissoes regulamentadas (psicologia, medicina). Casos que exijam diagnóstico ou tratamento medico/psicológico devem ser encaminhados aos profissionais competentes.</div>
+<h2 class="ch">1.1 O Curso e Sua Validade</h2>
+<p class="ch">Este curso ensina uma técnica profissional baseada na neurociencia para ajudar pessoas a processarem memórias difíceis que ficaram presas no sistema nervoso. A formação e reconhecida pelas leis brasileiras como um curso livre de capacitação profissional, amparado pelo <strong>Decreto Federal n.5.154/04</strong> e pela <strong>Lei de Diretrizes e Bases da Educação Nacional (Lei n.9.394/96)</strong>.</p>
+<p class="ch">Ao concluir o curso, você estara apto a atuar como <strong>Terapeuta Integrativo</strong>, podendo atender em consultorio ou online. E importante entender que este curso não substitui tratamentos medicos ou psicológicos; em casos graves, a pessoa deve ser encaminhada a um especialista. O curso também serve como formação complementar para quem ja trabalha com saude ou desenvolvimento humano.</p>
+<h3 class="ch">Caracteristicas do curso</h3>
+<ul class="ch">
+<li>Você não precisa ter faculdade para fazer este curso.</li>
+<li>Este curso não oferece diploma de faculdade, mas sim um certificado profissional.</li>
+<li>Ao final, você estara pronto para trabalhar como Terapeuta Integrativo.</li>
+<li>ATENCAO: Este curso não substitui tratamentos medicos ou psicológicos.</li>
+<li>Também serve como formação complementar para profissionais da saude.</li>
+</ul>
+<h3 class="ch">Para quem e este curso</h3>
+<ul class="ch"><li>Terapeutas integrativos</li><li>Profissionais de desenvolvimento humano</li><li>Coaches e mentores</li></ul>
+<h3 class="ch">Areas de Atuação do Terapeuta Integrativo</h3>
+<ul class="ch"><li>Consultorio físico</li><li>Atendimento online</li><li>Formação complementar</li></ul>
+<h2 class="ch">1.2 Requisitos e Estrutura do Certificado</h2>
+<p class="ch">Para realizar este curso, você precisa ter <strong>18 anos ou mais</strong> é um interesse genuíno em ajudar pessoas. Ter concluído o ensino médio é recomendado, mas não obrigatório.</p>
+<h3 class="ch">Para obter o certificado, você deve:</h3>
+<ul class="ch">
+<li>Estudar todo o conteudo deste material.</li>
+<li>Assistir a todas as videoaulas disponíveis na plataforma do curso.</li>
+<li>Realizar <strong>10 (dez) horas de prática supervisionada</strong>.</li>
+</ul>
+<h3 class="ch">O que é a Prática Supervisionada?</h3>
+<p class="ch">Na prática supervisionada, você atendera uma pessoa real, aplicando a técnica que aprendeu, enquanto um professor ou terapeuta experiente observa e orienta. E como quando você aprende a dirigir: primeiro estuda as regras, depois prática com um instrutor ao lado e, so então, dirige sozinho. Isso garante que você aplicara a técnica com seguranca, protegendo tanto você quanto seus futuros clientes.</p>
+<div class="box-t"><strong>Estrutura de Certificação:</strong> Curso Teorico &rarr; Prática Supervisionada &rarr; Certificado Profissional</div>
+<div class="yt-wrap" id="yt0" onclick="playVideo(this,'LgFc9xodook')" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;margin-top:16px;cursor:pointer;background:#000;"><img src="https://img.youtube.com/vi/LgFc9xodook/hqdefault.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius:10px;" /><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;background:rgba(255,0,0,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:12px 0 12px 22px;border-color:transparent transparent transparent #fff;margin-left:4px;"></div></div></div>
+<div class="done-row"><button class="btn-done" onclick="markDone(0)">Marcar como concluído</button><span class="done-hint" id="dh0">Clique ao terminar de estudar este módulo</span></div>
+</div>
+</div>
+
+<!-- MODULO 2 -->
+<div class="mod" id="m1">
+<div class="mod-head" onclick="tog(1)">
+  <div class="mod-n" id="n1">2</div>
+  <div class="mod-info">
+    <div class="mod-title">A Base Cientifica do Trauma e das Doencas Psicossomáticas</div>
+    <div class="mod-meta"><span class="mtag">&#127916; ~8 min</span><span class="mtag">&#128196; Pags. 4-7</span><span class="mtag g" id="dl1" style="display:none">&#10003; Concluído</span></div>
+  </div>
+  <div class="mod-act">
+    
+    <span class="chev">&#8964;</span>
+  </div>
+</div>
+<div class="mod-body">
+<h2 class="ch">2.1 O Sistema Nervoso e os Registros Traumáticos</h2>
+<p class="ch">Esta técnica parte de uma compreensão essencial: o ser humano e comandado pelo seu sistema nervoso. Quando falamos em problemas emocionais, na verdade nós referimos a <strong>registros biológicos</strong> de eventos que o sistema nervoso não conseguiu processar adequadamente.</p>
+<p class="ch">Imagine o cérebro como um computador superpoderoso. Quando algo muito assustador ou doloroso acontece (como um acidente, uma humilhacao, um susto grande), é como se esse computador tentasse salvar um arquivo muito pesado e travasse. O arquivo fica meio salvo, ocupando espaco, consumindo energia e fazendo o sistema todo funcionar mais devagar.</p>
+<p class="ch">Na vida real, esses arquivos travados são as <strong>memórias traumáticas</strong>. Elas ficam presas no sistema nervoso e continuam causando problemas anos depois:</p>
+<ul class="ch"><li>Medos sem motivo aparente</li><li>Reacoes exageradas a situações pequenas</li><li>Ansiedade constante</li><li>Dores no corpo sem causa física</li></ul>
+<div class="box-t">O objetivo do reprocessamento e justamente encontrar esses arquivos, finalizar o processo de salvamento e devolver o equilibrio natural ao organismo - estado conhecido como <strong>homeostase</strong>.</div>
+<h2 class="ch">2.2 Como o Cérebro Armazena o Trauma</h2>
+<h3 class="ch">A Amigdala - O Alarme de Incendio</h3>
+<p class="ch">E uma pequena estrutura em forma de amendoa, localizada no fundo do cérebro. Sua função e detectar perigo e ativar respostas de sobrevivencia. Em um trauma, a amigdala registra o evento com maxima urgencia - PERIGO! PERIGO! - e fica <strong>hiperativa</strong>.</p>
+<h3 class="ch">O Hipocampo - O Organizador do Tempo</h3>
+<p class="ch">Sua função e dar contexto temporal as memórias, ajudando a entender que algo aconteceu no passado. Em situações de estresse extremo, o hipocampo diminui seu funcionamento (<strong>hipoativacao</strong>).</p>
+<div class="box-a"><strong>Resultado:</strong> A memória fica com alta carga emocional (amigdala superativa), mas sem contexto temporal (hipocampo hipoativo). Por isso, mesmo 20 anos depois, a pessoa revive o trauma como se estivesse acontecendo agora. E como assistir a um filme de terror e sentir medo real, mesmo sabendo que é só um filme.</div>
+<h2 class="ch">2.3 Memória Consciente e Inconsciente</h2>
+<h3 class="ch">Memória Declarativa (Consciente)</h3>
+<p class="ch">Guarda fatos e eventos que podemos relatar com palavras. Exemplos: "Meu aniversario e em julho", "Fui ao parque ontem". São processadas principalmente no hipocampo e no cortex temporal.</p>
+<h3 class="ch">Memória Implicita (Inconsciente Corporal)</h3>
+<p class="ch">Guarda sensações corporais, emoções e reações automáticas - muitas vezes sem uma narrativa clara. Exemplos:</p>
+<ul class="ch">
+<li>Um cheiro que causa medo, mas você não sabe por que.</li>
+<li>Uma sensação de aperto no peito quando alguem levanta a voz.</li>
+<li>Uma reação automática de susto ao ouvir um barulho específico.</li>
+<li>Respostas automáticas do corpo: correr, lutar ou congelar quando ha perigo.</li>
+</ul>
+<p class="ch">Traumas, especialmente os ocorridos na <strong>primeira infancia (0 a 5 anos)</strong>, costumam ficar registrados como memória implícita. A crianca sente o medo é a dor, mas não forma uma lembranca narrativa organizada, pois o hipocampo ainda esta em desenvolvimento. Essas memórias implícitas são a fonte de muitos gatilhos e reações automáticas na vida adulta.</p>
+<h2 class="ch">2.4 A Conexao Mente-Corpo - O que e Psicossomática</h2>
+<p class="ch">Psicossomática significa: problemas na mente (psique) que se transformam em problemas no corpo (soma). Nosso corpo e nossa mente estao conectados como um smartphone e sua bateria. Se a mente esta sobrecarregada (com medo, raiva, tristeza), o corpo comeca a apresentar sinais de baixa bateria: dores, doencas, cansaco.</p>
+<ul class="ch">
+<li>Quando você esta nervoso para uma prova, pode sentir dor de barriga.</li>
+<li>Quando esta com muita raiva, pode ficar com dor de cabeca.</li>
+<li>Quando esta muito triste, pode sentir cansaco extremo.</li>
+</ul>
+<p class="ch">Isso acontece porque nosso sistema nervoso controla TUDO no corpo: batimentos do coração, digestao, respiracao, sistema de defesa. Se o sistema nervoso esta desregulado pelas emoções, o corpo todo fica desregulado.</p>
+<h2 class="ch">2.5 Como as Emocoes se Transformam em Sintomas Físicos</h2>
+<ul class="ch">
+<li><strong>Estresse continuo</strong> &rarr; Aumento de cortisol &rarr; Afeta o sistema imunológico é a digestao.</li>
+<li><strong>Raiva reprimida</strong> &rarr; Tensão muscular crônica &rarr; Dores e inflamacoes.</li>
+<li><strong>Medo constante</strong> &rarr; Ativacao da amigdala &rarr; Problemas cardiacos e respiratorios.</li>
+</ul>
+<div class="box-t">No RCI, quando fazemos o rastreamento dos gatilhos, é fundamental perguntar sobre sintomas físicos. Muitas vezes, ao reprocessar o trauma emocional, o sintoma físico desaparece - porque a energia que estava presa finalmente foi liberada.</div>
+<div class="yt-wrap" id="yt1" onclick="playVideo(this,'tkcT_jXl5bs')" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;margin-top:16px;cursor:pointer;background:#000;"><img src="https://img.youtube.com/vi/tkcT_jXl5bs/hqdefault.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius:10px;" /><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;background:rgba(255,0,0,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:12px 0 12px 22px;border-color:transparent transparent transparent #fff;margin-left:4px;"></div></div></div>
+<div class="done-row"><button class="btn-done" onclick="markDone(1)">Marcar como concluído</button><span class="done-hint" id="dh1">Clique ao terminar de estudar este módulo</span></div>
+</div>
+</div>
+<!-- MODULO 3 -->
+<div class="mod" id="m2">
+<div class="mod-head" onclick="tog(2)">
+  <div class="mod-n" id="n2">3</div>
+  <div class="mod-info">
+    <div class="mod-title">O Inconsciente e Seus Registros</div>
+    <div class="mod-meta"><span class="mtag">&#127916; ~8 min</span><span class="mtag">&#128196; Pags. 7-11</span><span class="mtag g" id="dl2" style="display:none">&#10003; Concluído</span></div>
+  </div>
+  <div class="mod-act"><span class="chev">&#8964;</span></div>
+</div>
+<div class="mod-body">
+<h2 class="ch">3.1 Entendendo o Inconsciente - O Computador que Guarda Tudo</h2>
+<p class="ch">O inconsciente armazena todas as experiencias, emoções e sensações que vivemos. Representa cerca de <strong>90 a 95%</strong> da nossa atividade mental, operando nós bastidores enquanto o consciente (5 a 10%) lida com o pensamento presente.</p>
+<h3 class="ch">Para trabalhar com RCI, é essencial compreender suas caracteristicas:</h3>
+<ul class="ch">
+<li><strong>1. Atemporal:</strong> Para o inconsciente, passado, presente e futuro são a mesma coisa. Uma memória de 30 anos atras pode ser sentida com a mesma intensidade de quando aconteceu. Por isso, traumas não melhoram com o tempo sozinhos - o tempo não cura, o que cura é o processamento.</li>
+<li><strong>2. Não verbal:</strong> O inconsciente não trabalha com palavras e lógica, mas com imagens, sensações corporais e emoções. E por isso que entender racionalmente um problema raramente resolve traumas. Você pode saber que não ha perigo, mas seu corpo continua tremendo.</li>
+<li><strong>3. Protetor:</strong> A função principal do inconsciente e garantir sua sobrevivencia. As vezes, ele cria estrategias que foram úteis no passado, mas se tornam problemas no presente. Por exemplo: uma crianca que aprendeu a se apagar para não apanhar pode, quando adulta, congelar em situações de conflito, mesmo sem perigo real.</li>
+<li><strong>4. Literal:</strong> O inconsciente leva tudo ao pe da letra. Ele não entende ironia, metaforas ou exageros. Se alguem te disse na infancia "você não serve para nada", seu inconsciente gravou isso como uma verdade absoluta. Anos depois, mesmo você sendo competente, aquela frase continua ecoando, gerando inseguranca e autossabotagem.</li>
+<li><strong>5. Associativo:</strong> O inconsciente conecta experiencias por similaridades emocionais ou sensoriais. Se uma memória traumática envolvia um cheiro específico, anos depois, ao sentir aquele mesmo cheiro, você pode sentir todo o desconforto de volta, sem entender por que.</li>
+</ul>
+<h2 class="ch">3.2 Como o Inconsciente Grava Memórias - O Papel do Cérebro</h2>
+<h3 class="ch">A Amigdala - O Alarme de Incendio</h3>
+<ul class="ch"><li>E uma pequena estrutura em forma de amendoa (por isso o nome).</li><li>Sua função e detectar perigo e acionar respostas de emergencia.</li><li>Ela age antes mesmo que você perceba conscientemente o que esta acontecendo.</li><li>Em situações de trauma, a amigdala grava a memória com a etiqueta: PERIGO MAXIMO! NAO ESQUECER!</li></ul>
+<h3 class="ch">O Hipocampo - O Organizador de Arquivos</h3>
+<ul class="ch"><li>E responsável por organizar as memórias no tempo e no espaco.</li><li>Ele ajuda a saber que algo aconteceu no passado e não esta acontecendo agora.</li><li>Em traumas muito intensos, o hipocampo pode desligar parcialmente para nós proteger.</li><li>Resultado: a memória fica guardada sem a informação de que e passado.</li></ul>
+<h3 class="ch">O Talamo - A Central de Informações</h3>
+<ul class="ch"><li>Recebe todas as informações dos sentidos (visão, audicao, tato, paladar, olfato).</li><li>Distribui essas informações para as partes certas do cérebro.</li><li>Em situações de perigo, pode enviar informações diretamente para a amigdala, sem passar pelo cortex racional.</li></ul>
+<h2 class="ch">3.3 O Processo de Gravacao Passo a Passo</h2>
+<ol class="ch">
+<li><strong>Percepção sensorial:</strong> Tudo comeca pelos sentidos. Você ve, ouve, sente algo.</li>
+<li><strong>Avaliação emocional:</strong> A amigdala avalia em fracoes de segundo: isso e perigo ou seguranca?</li>
+<li><strong>Codificacao:</strong> Se a experiencia tem carga emocional forte, a memória e marcada como importante e guardada com mais detalhes.</li>
+<li><strong>Consolidação:</strong> Durante o sono REM, o cérebro reorganiza as memórias, integra as emoções e arquiva.</li>
+<li><strong>Armazenamento:</strong> As memórias ficam distribuidas em redes neurais, não em um único lugar. Por isso, uma lembranca pode ser ativada por varios estimulos diferentes.</li>
+</ol>
+<h2 class="ch">3.4 Por que a Bilateralidade Funciona - A Conexao com o Sono REM</h2>
+<p class="ch">Durante o sono REM, nosso cérebro faz um trabalho incrivel de processamento emocional. Nessa fase:</p>
+<ul class="ch"><li>Os olhos se movem rapidamente de um lado para o outro.</li><li>A amigdala esta ativa, mas os níveis de noradrenalina (hormonio do estresse) estao baixos.</li><li>O cérebro revisita as experiencias do dia sem ser inundado pelo estresse.</li><li>As memórias são transferidas do hipocampo para o neocortex (armazenamento de longo prazo).</li><li>A emoção vai sendo aos poucos separada do conteudo da memória.</li></ul>
+<div class="box-t"><strong>Descoberta importante:</strong> Exames de eletroencefalograma (EEG) mostram que os movimentos bilaterais produzem ondas cerebrais identicas as do sono REM - ondas delta de 1 a 2 Hz. O RCI replica artificialmente o processo do sono REM, mas com o cliente acordado. Assim, podemos reprocessar traumas específicos de forma direcionada, completando o trabalho que ficou travado no sistema nervoso.</div>
+<h2 class="ch">3.5 Registros desde a Vida Intrauterina - O que a Ciencia Diz</h2>
+<p class="ch">Um dos pilares do RCI e reconhecer que os registros emocionais comecam muito antes do nascimento. A neurociencia moderna confirma que o feto desenvolve capacidades sensoriais e emocionais progressivamente durante a gestacao.</p>
+<table class="ch">
+<tr><th>Idade gestacional</th><th>Sentido desenvolvido</th><th>O que o bebe registra</th></tr>
+<tr><td>8 semanas</td><td>Tato básico</td><td>Primeiras sensações de pressão, temperatura do utero</td></tr>
+<tr><td>18-20 semanas</td><td>Audicao</td><td>Voz da mae, sons do ambiente, tons emocionais</td></tr>
+<tr><td>24-28 semanas</td><td>Paladar e olfato</td><td>Sabores do liquido amniotico</td></tr>
+<tr><td>26-28 semanas</td><td>Visão limitada</td><td>Mudancas de luminosidade atraves da barriga</td></tr>
+<tr><td>Todo período</td><td>Emocoes</td><td>Hormonios do estresse (cortisol) ou bem-estar (ocitocina) atravessam a placenta</td></tr>
+</table>
+<h3 class="ch">Gatilhos que podem ter origem intrauterina (quando surgem espontaneamente):</h3>
+<ul class="ch"><li>Rejeicao: gravidez indesejada, tentativas de aborto, pensamentos recorrentes de rejeicao da mae.</li><li>Estresse materno intenso: violencia domestica, luto, problemas financeiros graves, conflitos conjugais.</li><li>Traumas físicos: acidentes, quedas, procedimentos medicos invasivos na mae.</li><li>Ameacas de sobrevivencia: complicacoes gestacionais, sangramento, risco de aborto.</li><li>Ambiente toxico: uso de alcool, drogas ou medicamentos prejudiciais.</li><li>Perda de gemeo: sindrome do gemeo desaparecido.</li></ul>
+<div class="box-r"><strong>REGRA DE OURO DO RCI:</strong> Trabalhamos registros intrauterinos apenas se surgirem espontaneamente durante o rastreamento. Nunca investigamos ou sugerimos - se não vier, não mexemos.</div>
+<h3 class="ch">Manifestacoes comuns em adultos com gatilhos intrauterinos:</h3>
+<ul class="ch"><li>Sensação de não pertencimento.</li><li>Ansiedade sem causa aparente.</li><li>Medo de rejeicao desproporcional.</li><li>Dificuldade em sentir-se seguro mesmo em ambientes seguros.</li><li>Problemas de vinculo e confianca.</li></ul>
+<div class="yt-wrap" id="yt2" onclick="playVideo(this,'b7Bx1d5AxcE')" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;margin-top:16px;cursor:pointer;background:#000;"><img src="https://img.youtube.com/vi/b7Bx1d5AxcE/hqdefault.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius:10px;" /><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;background:rgba(255,0,0,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:12px 0 12px 22px;border-color:transparent transparent transparent #fff;margin-left:4px;"></div></div></div>
+<div class="done-row"><button class="btn-done" onclick="markDone(2)">Marcar como concluído</button><span class="done-hint" id="dh2">Clique ao terminar de estudar este módulo</span></div>
+</div>
+</div>
+<!-- MODULO 4 -->
+<div class="mod" id="m3">
+<div class="mod-head" onclick="tog(3)">
+  <div class="mod-n" id="n3">4</div>
+  <div class="mod-info">
+    <div class="mod-title">Gatilhos Emocionais - Identificação e Rastreamento</div>
+    <div class="mod-meta"><span class="mtag">&#127916; ~8 min</span><span class="mtag">&#128196; Pags. 11-19</span><span class="mtag g" id="dl3" style="display:none">&#10003; Concluído</span></div>
+  </div>
+  <div class="mod-act"><span class="chev">&#8964;</span></div>
+</div>
+<div class="mod-body">
+<h2 class="ch">4.1 O que São Gatilhos Emocionais?</h2>
+<p class="ch">Imagine que você tem dentro de você varios "botoes". Quando alguem ou alguma situação aperta um desses botoes, uma reação automática e disparada - pode ser medo, raiva, tristeza, vontade de fugir, de se esconder ou de atacar. Esses botoes são os <strong>gatilhos emocionais</strong>.</p>
+<p class="ch"><strong>Definicao simples:</strong> Gatilhos são estimulos (coisas que vemos, ouvimos, sentimos) que ativam uma resposta emocional intensa e automática, geralmente desproporcional a situação presente.</p>
+<div class="box-t"><strong>Exemplo clássico:</strong> Uma pessoa foi humilhada em publico aos 13 anos (um professor gritou com ela na frente da turma). Trinta anos depois, ela precisa apresentar um trabalho no escritorio. Mesmo sendo uma situação segura, seu coração dispara, sua mente trava, ela sente panico. A situação atual apertou o botao da memória antiga.</div>
+<h2 class="ch">4.2 A Anatomia de um Gatilho - Como Ele e Formado</h2>
+<table class="ch">
+<tr><th>Componente</th><th>Descrição</th><th>Exemplo</th></tr>
+<tr><td>Evento Original</td><td>A experiencia intensa que criou o molde.</td><td>Aos 8 anos, o pai gritava e batia quando tirava notas baixas.</td></tr>
+<tr><td>Elementos Sensoriais</td><td>Cheiros, sons, imagens gravados junto com o evento.</td><td>Tom de voz elevado, expressão facial de raiva.</td></tr>
+<tr><td>Emoção Primaria</td><td>O que a crianca sentiu na epoca.</td><td>Medo intenso, sensação de impotencia.</td></tr>
+<tr><td>Crenca Formada</td><td>A conclusão automática que o inconsciente gravou.</td><td>"Não sou bom o suficiente".</td></tr>
+<tr><td>Padrao de Resposta</td><td>O comportamento automático que se repete.</td><td>Congelamento, tentativa de agradar, fuga.</td></tr>
+<tr><td>Manifestacao Somatica</td><td>Sintoma físico que acompanha.</td><td>Aperto no peito, no na garganta.</td></tr>
+</table>
+<h2 class="ch">4.3 Tipos de Gatilhos</h2>
+<h3 class="ch">1. Gatilhos Sensoriais (os mais comuns)</h3>
+<ul class="ch"><li><strong>Visuais:</strong> Expressoes faciais (sobrancelha franzida, olhar de desprezo), objetos (cinto, vara), cores, ambientes similares (sala de aula, consultorio medico).</li><li><strong>Auditivos:</strong> Tons de voz (gritos, silencio tenso), musicas, sons específicos (porta batendo, passos).</li><li><strong>Olfativos:</strong> O olfato é o sentido mais primitivo, conectado diretamente ao sistema limbico. Cheiros são gatilhos extremamente poderosos (perfume, cheiro de hospital, de comida).</li><li><strong>Tateis:</strong> Tipos de toque (tapas, cócegas forcadas), texturas, temperatura.</li><li><strong>Gustativos:</strong> Sabores associados a experiencias (menos comum, mas possível).</li></ul>
+<h3 class="ch">2. Gatilhos Relacionais</h3>
+<ul class="ch"><li><strong>Rejeicao:</strong> Ser ignorado, excluido, preterido, não receber resposta.</li><li><strong>Abandono:</strong> Separacoes, partidas, pessoa importante sumir, silencio prolongado.</li><li><strong>Critica / Julgamento:</strong> Avaliacoes negativas, comparacoes desfavoraveis, ironias.</li><li><strong>Invasao:</strong> Violacao de limites, invasao de privacidade, toque indesejado.</li><li><strong>Controle:</strong> Ser manipulado, controlado, impedido de fazer o que quer.</li><li><strong>Traicao:</strong> Quebra de confianca, engano, deslealdade, mentira.</li></ul>
+<h3 class="ch">3. Gatilhos Situacionais</h3>
+<ul class="ch"><li><strong>Datas:</strong> Aniversarios de perdas, datas de traumas (Natal, Dia das Maes), epocas do ano.</li><li><strong>Lugares:</strong> Locais onde ocorreram eventos traumáticos (escola, hospital, casa de parente).</li><li><strong>Contextos:</strong> Situacoes similares (apresentacoes, exames, entrevistas, consultas medicas).</li><li><strong>Transicoes:</strong> Mudancas de fase, fim de ciclos, comeco de algo novo.</li></ul>
+<h3 class="ch">4. Gatilhos Somáticos (o corpo avisando)</h3>
+<ul class="ch"><li>Dores crônicas que pioram em situações de estresse.</li><li>Sintomas digestivos (diarreia, constipacao, azia) em momentos específicos.</li><li>Taquicardia, falta de ar sem causa física.</li><li>Tensoes musculares localizadas.</li><li>Problemas de pele que surgem em epocas de conflito.</li><li>Fadiga extrema após situações emocionais.</li></ul>
+<div class="box-a"><strong>IMPORTANTE:</strong> Quando um sintoma físico persiste sem causa medica, investigue sempre: "Quando esse sintoma comecou? O que estava acontecendo na sua vida nessa epoca?" Muitas vezes, ha um gatilho emocional na origem.</div>
+<h2 class="ch">4.4 Rastreamento Cronológico de 5 em 5 Anos - O Coração do Metodo RCI</h2>
+<p class="ch">A metodologia central do RCI é o rastreamento sistematico de gatilhos atraves de intervalos de 5 anos, comecando da vida intrauterina ate a idade atual do cliente. Este metodo permite identificar padroes, conexões é a evolução dos gatilhos ao longo da vida.</p>
+<h3 class="ch">Por que intervalos de 5 anos?</h3>
+<ul class="ch"><li><strong>Desenvolvimento psicológico:</strong> Cada período de 5 anos corresponde a fases distintas do desenvolvimento humano.</li><li><strong>Memória acessível:</strong> Períodos mais curtos podem gerar sobrecarga; mais longos perdem detalhes importantes.</li><li><strong>Padroes identificaveis:</strong> Com intervalos de 5 anos, fica mais fácil perceber repeticoes e evolucoes de temas emocionais.</li><li><strong>Eficiencia terapêutica:</strong> Equilibra profundidade com praticidade do processo.</li></ul>
+<h2 class="ch">4.5 As Fases Cronológicas e Seus Temas Tipicos</h2>
+<table class="ch">
+<tr><th>Fase</th><th>Temas de Desenvolvimento</th><th>Gatilhos Comuns</th></tr>
+<tr><td>Gestacao</td><td>Formação física, conexao mae-bebe</td><td>Rejeicao, inseguranca existencial, ameaca de sobrevivencia</td></tr>
+<tr><td>0-5 anos</td><td>Apego, seguranca básica, autonomia inicial</td><td>Abandono, negligencia, abuso, separação dos pais, hospitalizacoes</td></tr>
+<tr><td>6-10 anos</td><td>Socializacao, escola, competencia, primeiras amizades</td><td>Bullying, humilhacao publica, fracasso escolar</td></tr>
+<tr><td>11-15 anos</td><td>Puberdade, identidade, pertencimento ao grupo</td><td>Vergonha corporal, exclusao social, primeiras decepcoes amorosas</td></tr>
+<tr><td>16-20 anos</td><td>Independencia, primeiros relacionamentos serios</td><td>Términos amorosos, fracasso em vestibular, pressão familiar</td></tr>
+<tr><td>21-25 anos</td><td>Carreira, autonomia financeira, relacionamentos estaveis</td><td>Fracasso profissional, desemprego, relacionamentos toxicos</td></tr>
+<tr><td>26-30 anos</td><td>Consolidação, familia, responsabilidades</td><td>Crises conjugais, perdas de entes queridos, problemas de fertilidade</td></tr>
+<tr><td>31-35 anos</td><td>Estabilidade ou crise, questionamentos</td><td>Divorcio, insatisfacao profissional, crise existencial, doencas</td></tr>
+<tr><td>36-40 anos</td><td>Meia-idade, balanco de vida</td><td>Perda de pais, sensação de tempo passando, arrependimentos</td></tr>
+<tr><td>41+ anos</td><td>Continue de 5 em 5 ate a idade atual</td><td>Conforme a fase</td></tr>
+</table>
+<h2 class="ch">4.6 Como Fazer o Rastreamento na Prática</h2>
+<div class="box-t"><strong>Instrução para o cliente:</strong> "Vamos fazer uma viagem pela sua historia de vida, procurando momentos em que você sentiu algo parecido com o que sente hoje. Vou perguntar sobre diferentes períodos da sua vida, de 5 em 5 anos. Não precisa se preocupar em lembrar de tudo perfeitamente - confie na primeira coisa que vier a sua mente. Pode ser uma imagem, uma sensação, uma cena solta. Tudo é válido."</div>
+<ol class="ch">
+<li>"Entre [idade atual - 5 anos] e [idade atual], aconteceu alguma situação marcante onde você sentiu [emoção identificada]?"</li>
+<li>Se sim: "Me conte brevemente o que aconteceu. Quem estava envolvido? Como foi para você?"</li>
+<li>"Hoje, quando você pensa nessa lembranca, de 0 a 10, qual a intensidade do desconforto?"</li>
+<li>Anote: período, evento resumido, intensidade.</li>
+<li>Repita para cada período: 5 anos antes, mais 5 anos antes... ate chegar a gestacao.</li>
+</ol>
+<ul class="ch"><li>Registre apenas eventos com carga emocional <strong>3 ou superior</strong>.</li><li>Se o cliente não lembrar de nada em um período, tudo bem. Passe para o proximo.</li></ul>
+<h2 class="ch">4.7 Identificando o Evento Raiz (Imprinting)</h2>
+<p class="ch">Objetivo: Encontrar o <strong>primeiro evento da cadeia</strong>, aquele que deu origem ao padrao emocional.</p>
+<ol class="ch">
+<li><strong>Olhar para o mais antigo:</strong> "Qual deles parece ser o primeiro onde esse padrao comecou?"</li>
+<li><strong>Verificar a intensidade:</strong> O evento raiz geralmente tem intensidade alta (7 a 10). Mas as vezes um evento mais antigo tem intensidade menor, mas os posteriores são copias dele.</li>
+<li><strong>Pergunta de confirmacao:</strong> "Quando você pensa nesse evento, você sente que ali comecou algo? Que os outros eventos são como repeticoes disso?"</li>
+</ol>
+<p class="ch"><strong>Importante:</strong> O cliente pode não ter consciencia plena, mas muitas vezes ha um estalo de reconhecimento. Se houver evento intrauterino: trabalhe apenas se surgiu espontaneamente é o cliente reconhece alguma conexao.</p>
+<h2 class="ch">4.8 Contraindicações - Quando NAO Aplicar o RCI</h2>
+<div class="box-r"><strong>CONTRAINDICACOES ABSOLUTAS (NUNCA aplicar):</strong><br>1. Psicose ativa: alucinações, delirios, surto psicotico.<br>2. Epilepsia não controlada: os movimentos oculares podem desencadear crises.<br>3. Lesoes oculares graves ou cirurgia ocular recente (menos de 6 meses).<br>4. Trauma ha menos de 72 horas em estado de choque agudo.<br>5. Paciente intoxicado por alcool ou drogas.</div>
+<div class="box-a"><strong>CONTRAINDICACOES RELATIVAS (avaliar com cuidado):</strong><br>1. Gravidez de risco (em gravidez saudável, sessões mais curtas e movimentos mais lentos).<br>2. Dissociação grave: trabalhar primeiro estabilização e grounding.<br>3. Cardiopatia grave: avaliar com medico; manter sessões curtas.<br>4. Incapacidade de atenção dual: criancas muito pequenas, idosos com demencia.<br>5. Perigo iminente não resolvido: violencia domestica ativa ou abuso em curso.</div>
+<h2 class="ch">4.9 Exemplo Clinico - A Jornada de Ana</h2>
+<p class="ch"><strong>Cliente:</strong> Ana, 35 anos, executiva. "Panico de falar em publico. Meu coração dispara, minha mente trava, sinto que vou desmaiar. Ja recusei promocoes para não ter que apresentar."</p>
+<h3 class="ch">Linha do tempo</h3>
+<table class="ch">
+<tr><th>Período</th><th>Evento</th><th>Intensidade</th></tr>
+<tr><td>30-35 anos</td><td>Travou em reuniao importante, precisou sair da sala</td><td>8/10</td></tr>
+<tr><td>21-25 anos</td><td>Apresentação de TCC, riu nervoso, professora fez cara de decepcao</td><td>10/10</td></tr>
+<tr><td>16-20 anos</td><td>Apresentação no cursinho, esqueceu tudo, colegas riram</td><td>8/10</td></tr>
+<tr><td>11-15 anos</td><td>Professora disse "senta, você não estudou" em tom de deboche</td><td>10/10</td></tr>
+<tr><td>6-10 anos</td><td>Pai comparando com irmão: "seu irmão tira notas boas, você e tao burra?"</td><td>7/10</td></tr>
+</table>
+<p class="ch"><strong>Evento raiz:</strong> Aos 13 anos, na aula de geografia. Ali a crenca "sou incompetente" se cristalizou.</p>
+<h3 class="ch">Dessensibilização</h3>
+<ul class="ch"><li>Rodada 1: intensidade 10/10</li><li>Rodada 2: intensidade 8/10 (surge raiva da professora)</li><li>Rodada 3: intensidade 5/10 ("eu era so uma crianca, ela que foi cruel")</li><li>Rodada 4: intensidade 2/10</li><li>Rodada 5: intensidade 0/10</li></ul>
+<p class="ch">Depois processou os eventos seguintes em ordem cronológica. Cada um zerou mais rapido porque a raiz ja tinha sido resolvida.</p>
+<p class="ch"><strong>Resultado:</strong> Ana fez 6 sessões no total. Retornou após 3 meses: havia feito duas apresentacoes no trabalho sem ansiedade e recebido uma promocao. A intensidade atual ao pensar em falar em publico era 0-1.</p>
+<div class="yt-wrap" id="yt3" onclick="playVideo(this,'SbtBAF8Olbg')" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;margin-top:16px;cursor:pointer;background:#000;"><img src="https://img.youtube.com/vi/SbtBAF8Olbg/hqdefault.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius:10px;" /><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;background:rgba(255,0,0,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:12px 0 12px 22px;border-color:transparent transparent transparent #fff;margin-left:4px;"></div></div></div>
+<div class="done-row"><button class="btn-done" onclick="markDone(3)">Marcar como concluído</button><span class="done-hint" id="dh3">Clique ao terminar de estudar este módulo</span></div>
+</div>
+</div>
+<!-- MODULO 5 -->
+<div class="mod" id="m4">
+<div class="mod-head" onclick="tog(4)">
+  <div class="mod-n" id="n4">5</div>
+  <div class="mod-info">
+    <div class="mod-title">Protocolo RCI - Passo a Passo Completo</div>
+    <div class="mod-meta"><span class="mtag">&#127916; ~8 min</span><span class="mtag">&#128196; Pags. 19-29</span><span class="mtag g" id="dl4" style="display:none">&#10003; Concluído</span></div>
+  </div>
+  <div class="mod-act"><span class="chev">&#8964;</span></div>
+</div>
+<div class="mod-body">
+<h2 class="ch">5.1 Estrutura Geral das Sessões</h2>
+<p class="ch">Cada sessão de RCI tem uma duracao recomendada de <strong>50 minutos</strong>:</p>
+<ul class="ch"><li>5 a 10 minutos: Acolhimento, check-in, identificação do que sera trabalhado no dia.</li><li>15 a 20 minutos: Construcao ou aprofundamento da linha do tempo e processamento continuado de eventos ja identificados.</li><li>20 a 25 minutos: Dessensibilização com movimentos bilaterais (a parte central).</li><li>5 minutos: Fechamento, estabilização, orientações para a semana.</li></ul>
+<h3 class="ch">Número de sessões (em media)</h3>
+<ul class="ch"><li>Trauma único e recente: 3 a 5 sessões.</li><li>Múltiplos traumas em diferentes fases: 8 a 15 sessões.</li><li>Trauma complexo (abuso crônico, negligencia severa): 15 a 30+ sessões.</li></ul>
+<div class="box-a">A <strong>alta</strong> e determinada pela auditoria terapêutica (Fase 6), não por um número pre-determinado de sessões.</div>
+<h2 class="ch">5.2 Fase 1 - Identificação do Problema Atual</h2>
+<p class="ch">Objetivo: Clarificar a queixa principal e identificar o gatilho emocional específico a ser trabalhado.</p>
+<h3 class="ch">Perguntas-chave</h3>
+<ol class="ch">
+<li>"O que te traz aqui hoje? Qual situação ou emoção esta causando sofrimento?" - Deixe o cliente falar livremente. Anote palavras-chave.</li>
+<li>"Quando essa situação acontece, o que você sente no corpo? Onde esta localizada essa sensação?" - Fundamental para acessar a memória implícita (corporal).</li>
+<li>"De 0 a 10, qual a intensidade desse desconforto AGORA, ao pensar nessa situação?" - 0 = nenhum desconforto. 10 = maximo desconforto, insuportável.</li>
+<li>"Quando você sente isso, alguma crenca sobre você mesmo vem a mente? Por exemplo: não sou bom o suficiente, estou em perigo, não mereco?"</li>
+<li>"Você tem notado algum sintoma físico recorrente associado a essas emoções? Dores de cabeca, problemas de estomago, tensão muscular, insonia, taquicardia?"</li>
+</ol>
+<h2 class="ch">5.3 Fase 2 - Construcao da Linha do Tempo</h2>
+<div class="box-t">"Vamos fazer uma jornada atraves da sua historia de vida, procurando momentos em que você sentiu algo parecido com o que sente agora. Vou perguntar sobre diferentes períodos da sua vida, de 5 em 5 anos. Confie na primeira coisa que vier a sua mente - pode ser uma imagem, uma sensação, uma cena solta. Tudo é válido."</div>
+<p class="ch">Comece do período mais recente e va recuando ate a gestacao, registrando apenas eventos com carga emocional <strong>3 ou superior</strong>.</p>
+<h2 class="ch">5.4 Fase 3 - Identificação do Evento Raiz</h2>
+<p class="ch">Objetivo: Encontrar o primeiro evento da cadeia, aquele que deu origem ao padrao emocional. (Ver procedimento completo no Módulo 4, secao 4.7.)</p>
+<h2 class="ch">5.5 Fase 4 - Dessensibilização com Movimentos Bilaterais</h2>
+<p class="ch">Esta é a <strong>fase central do RCI</strong>. Aplicamos os movimentos oculares para reprocessar cada evento identificado, comecando sempre pelo evento raiz e progredindo cronológicamente ate o presente.</p>
+<h3 class="ch">Ordem de processamento</h3>
+<ol class="ch"><li>Vida intrauterina (se identificado e apenas se surgiu espontaneamente).</li><li>Evento raiz (o primeiro da cadeia).</li><li>Eventos subsequentes em ordem cronológica (do mais antigo para o mais recente).</li><li>Situação atual/recente.</li></ol>
+<div class="box-t"><strong>Instrução para o cliente (antes de comecar):</strong> "Agora vamos trabalhar diretamente com a memória que identificamos. Eu vou pedir para você trazer essa lembranca a mente, com a imagem, as sensações no corpo é a emoção. Enquanto mantem o foco nisso, você vai acompanhar meu dedo apenas com os olhos, sem mover a cabeca. Pode ser que venham outras imagens, pensamentos, sensações - tudo normal. Não precisa se preocupar em fazer certo, apenas deixe acontecer. Se em algum momento precisar parar, é só me avisar. Combinado?"</div>
+<h2 class="ch">5.6 Técnica dos Movimentos - Como Fazer Corretamente</h2>
+<h3 class="ch">Posicionamento</h3>
+<ul class="ch"><li>Use o dedo indicador ou uma caneta com ponta arredondada (sem ponta).</li><li>Posicione a 30 a 40 centimetros do rosto do cliente, na linha dos olhos dele.</li><li>Comece na linha media (centro) e mova para um lado.</li><li>Movimento: Horizontal (da esquerda para a direita do cliente). Amplitude: cerca de 60 a 80 centimetros. Movimento suave, continuo, sem paradas bruscas.</li></ul>
+<table class="ch">
+<tr><th></th><th>RAPIDOS (Dessensibilização)</th><th>LENTOS (Instalação)</th></tr>
+<tr><td>Velocidade</td><td>1 ciclo/segundo</td><td>2-4 seg/ciclo</td></tr>
+<tr><td>Duracao</td><td>30-60 segundos</td><td>4-6 movimentos</td></tr>
+<tr><td>Objetivo</td><td>Drenar a carga emocional da memória</td><td>Instalar e fortalecer o recurso positivo</td></tr>
+<tr><td>Para</td><td>Traumas passados</td><td>Recursos futuros</td></tr>
+</table>
+<h2 class="ch">5.7 Sequencia Classica de Movimentos (Descondicionamento)</h2>
+<p class="ch">Use seu dedo como referencia visual. Peca ao cliente para seguir com os olhos (sem mexer a cabeca) a seguinte sequencia:</p>
+<p class="ch"><strong>1. Centro &rarr; 2. Direita &rarr; 3. Esquerda &rarr; 4. Direita superior &rarr; 5. Esquerda superior &rarr; 6. Direita inferior &rarr; 7. Esquerda inferior &rarr; 8. Centro novamente.</strong></p>
+<p class="ch">Movimento lento (~2 segundos por posição), preciso, bem definido, silencioso. Pode ser repetido em series de 3 a 5 vezes. Esta variacao de direcoes ativa diferentes areas do campo visual e promove integração mais ampla, ajudando a desmontar padroes automáticos e criar flexibilidade neural.</p>
+<h2 class="ch">5.8 Diferentes Padroes de Movimento para Diferentes Objetivos</h2>
+<h3 class="ch">5.8.1 Movimentos Rapidos e Continuos - Para Processamento de Traumas</h3>
+<ul class="ch"><li>Velocidade: aproximadamente 1 ciclo completo por segundo.</li><li>Direcao: horizontal, com amplitude total do campo visual.</li><li>Ritmo: continuo, sem pausas, durante series de 30 a 60 segundos.</li><li>Usar durante a Fase 4 - Dessensibilização, especialmente no evento raiz.</li></ul>
+<h3 class="ch">5.8.2 Movimentos Lentos com Alternancia de Direcoes - Para Descondicionamento</h3>
+<ul class="ch"><li>Velocidade: aproximadamente 2 segundos por ciclo.</li><li>Direcao: pode variar - horizontal, vertical, diagonal, ou em formato de oito.</li><li>Ritmo: com pausas sutis em pontos extremos, ou mudancas de direcao inesperadas (como na Sequencia Classica).</li><li>Usar após a dessensibilização de um evento raiz, mas antes da instalação de recursos.</li></ul>
+<h3 class="ch">5.8.3 Movimentos Lentos e Suaves - Para Instalação de Recursos</h3>
+<ul class="ch"><li>Velocidade: cerca de 3 a 4 segundos por ciclo.</li><li>Direcao: preferencialmente horizontal, ou oito deitado (infinito).</li><li>Ritmo: extremamente suave, sem pausas bruscas, como se estivesse acariciando o sistema nervoso.</li><li>Usar durante a Fase 5 - Instalação de Cognicao Positiva e na Ponte para o Futuro.</li></ul>
+<table class="ch">
+<tr><th>Objetivo</th><th>Tipo de Movimento</th><th>Velocidade</th><th>Direcao</th><th>Duracao</th></tr>
+<tr><td>Processar trauma</td><td>Rapido, continuo</td><td>~1 ciclo/s</td><td>Horizontal</td><td>30 a 60 segundos</td></tr>
+<tr><td>Descondicionar padroes</td><td>Lento, com variacoes</td><td>~2 ciclos/s</td><td>Variada ou sequencia clássica</td><td>15 a 30 segundos</td></tr>
+<tr><td>Instalar recursos</td><td>Muito lento, suave</td><td>3 a 4 s/ciclo</td><td>Horizontal ou oito</td><td>4 a 6 movimentos</td></tr>
+</table>
+<h2 class="ch">5.9 Protocolo Passo a Passo da Dessensibilização</h2>
+<ol class="ch">
+<li><strong>Ativacao da memória:</strong> "Traga a mente aquela memória. Perceba a imagem, as sensações no corpo, a emoção. De 0 a 10, qual a intensidade agora?"</li>
+<li><strong>Inicio dos movimentos:</strong> "Mantendo contato com essa memória, siga meu dedo apenas com os olhos, sem mover a cabeca." Inicie movimentos rapidos. Mantenha por cerca de 30 segundos (24 a 36 movimentos).</li>
+<li><strong>Pausa e verificacao:</strong> "Respire fundo. O que você percebe agora? O que veio a mente? Como esta a intensidade, de 0 a 10?"</li>
+<li><strong>Repetição:</strong> Se diminuiu mas ainda acima de 0-1: faca outra serie. Se não mudou após 3 series: pode haver evento mais antigo. Pergunte: "Você consegue lembrar algum momento mais antigo?" Intensidade chegou a 0 ou 1: passe para o proximo evento.</li>
+<li><strong>Processar os eventos seguintes:</strong> Após o evento raiz, processe os proximos em ordem cronológica. Eles zeram mais rapido porque a raiz ja foi resolvida.</li>
+</ol>
+<h2 class="ch">5.10 Sinais de que o Processamento Esta Funcionando</h2>
+<h3 class="ch">Sinais físicos</h3>
+<ul class="ch"><li>Mudancas na respiracao (suspiros profundos, respiracao mais lenta).</li><li>Relaxamento muscular facial (testa, mandibula). Ombros que caem.</li><li>Lagrimas (liberação emocional). Bocejos (sinal de processamento neurológico).</li><li>Mudanca na cor da pele (mais rosada, menos palida).</li></ul>
+<h3 class="ch">Sinais perceptivos (relatados pelo cliente)</h3>
+<ul class="ch"><li>"A imagem ficou mais distante / embacada / menor."</li><li>"E como se fosse um filme antigo, não comigo."</li><li>"Consigo pensar nisso sem sentir aquela dor."</li></ul>
+<h3 class="ch">Mudancas na narrativa</h3>
+<ul class="ch"><li>"Na epoca eu era so uma crianca, não era minha culpa."</li><li>"Ela que estava errada, não eu." / "Entendi por que aquilo aconteceu."</li></ul>
+<h2 class="ch">5.11 Manejo de Situacoes Dificeis Durante o Processamento</h2>
+<table class="ch">
+<tr><th>Situação</th><th>O que fazer</th></tr>
+<tr><td>Abreação intensa (choro convulsivo, panico, tremor)</td><td>PARE os movimentos IMEDIATAMENTE. "Respire comigo." Use ancoragem: "Você esta aqui, comigo, em [ano atual]." Peca para sentir os pes no chao. Aguarde ate se acalmar. Se não estabilizar, encerre a sessão e trabalhe grounding.</td></tr>
+<tr><td>Dissociação (olhar vazio, ausente)</td><td>PARE. Use 5-4-3-2-1: "Diga 5 coisas que você VE, 4 que pode TOCAR, 3 que OUVE, 2 que CHEIRA, 1 que SENTE no corpo." Não prossiga ate estar plenamente presente.</td></tr>
+<tr><td>Intensidade não diminui após 5-6 rodadas</td><td>Pode haver evento mais antigo. Pergunte: "Essa sensação lembra algum momento mais antigo?" Se não, encerre e investigue na proxima sessão.</td></tr>
+<tr><td>Cliente quer parar</td><td>RESPEITE SEMPRE. Estabilize com respiracao e grounding. Agende retorno.</td></tr>
+<tr><td>Surgimento de nova memória</td><td>Otimo! Sinal de que a rede neural esta se abrindo. Pergunte: "Essa memória parece conectada?" Se sim, pode processa-la agora ou anotar para a proxima sessão.</td></tr>
+</table>
+<div class="box-r"><strong>REGRA DE OURO:</strong> A seguranca do cliente vem sempre antes do protocolo. Se não esta indo bem, PARE e estabilize.</div>
+<h2 class="ch">5.12 Protocolo para Sintomas Somáticos</h2>
+<p class="ch">Quando o cliente tem um sintoma físico recorrente (ex.: enxaqueca, dor nas costas, gastrite) que você suspeita ter origem emocional, use este protocolo:</p>
+<ol class="ch">
+<li>Identifique o inicio do sintoma: "Quando esse sintoma comecou? O que estava acontecendo na sua vida nessa epoca?"</li>
+<li>Localize o evento emocional associado: provavelmente havera um evento estressor na mesma epoca. Inclua esse evento na linha do tempo.</li>
+<li>Durante a dessensibilização: "Traga a mente a memória daquele evento. Enquanto mantem essa imagem, perceba também a sensação física no local onde você sente a dor AGORA."</li>
+<li>Faca movimentos RAPIDOS (como no trauma).</li>
+<li>A cada pausa, pergunte: "Como esta a intensidade da emoção, de 0 a 10?" e "E o desconforto no corpo, de 0 a 10?"</li>
+<li>Continue ate AMBOS zerarem (emoção e sintoma).</li>
+</ol>
+<div class="box-a"><strong>Importante:</strong> Se após zerar a emoção o sintoma físico persistir: pode haver outro evento mais antigo; pode ser uma causa medica real (encaminhe para avaliação); pode ser uma memória corporal que precisa de abordagem complementar.</div>
+<h2 class="ch">5.13 Fase 5 - Instalação de Recursos para o Futuro</h2>
+<p class="ch">Após dessensibilizar todos os eventos do passado (intensidades em 0-1), chega o momento de instalar recursos positivos.</p>
+<ol class="ch">
+<li>"Pense em uma situação futura onde esse gatilho seria ativado. Como você GOSTARIA de se sentir e agir?"</li>
+<li>"Em vez daquela crenca negativa antiga, qual crenca seria verdadeira e fortalecedora agora?" Exemplos: "Sou capaz.", "Estou seguro.", "Mereco respeito.", "Posso lidar com isso.", "Minha opiniao importa."</li>
+</ol>
+<div class="box-t">A crenca deve ser: na primeira pessoa ("Eu..."), no presente ("sou", "posso", "mereco"), positiva (afirma o que E, não nega o que não e).</div>
+<h2 class="ch">5.14 Instalação com Movimentos Lentos</h2>
+<ol class="ch">
+<li>"Agora, imagine-se naquela situação futura, sentindo-se [emoção positiva] e pensando [crenca positiva]. Perceba essa sensação boa no seu corpo. Agora, mantenha essa imagem e essa sensação, e siga meu dedo com os olhos."</li>
+<li>Use VELOCIDADE LENTA (2 segundos por ciclo). Series CURTAS: apenas 4 a 6 movimentos por vez. Faca 3 a 4 series. Movimento suave, como se estivesse ninando o sistema nervoso.</li>
+<li>"Agora, imagine essa mesma situação futura novamente. O que você percebe? Como se sente? Consegue se ver respondendo de forma diferente?"</li>
+<li>"Imagine-se daqui a 1 mes, 6 meses, 1 ano. Como você se ve lidando com os desafios? O que mudou?"</li>
+</ol>
+<h2 class="ch">5.15 Explicando o RCI para o Cliente - As 3 Fases em Linguagem Simples</h2>
+<div class="box-t">Vamos imaginar que o cérebro é como um computador muito inteligente que aprende com tudo o que acontece com você. As vezes ele aprende a se proteger tanto... que continua reagindo mesmo quando o perigo ja passou. Esta sessão é como ajudar o cérebro a atualizar o programa. Não e magica. E so ensinar o cérebro a parar de usar um jeito antigo de reagir e aprender um jeito melhor.</div>
+<h3 class="ch">1 FASE - PROCESSAR</h3>
+<p class="ch">O que fazemos: Ajudamos o cérebro a entender que algo ruim ja acabou. Você pensa na situação que incomoda um pouco, sem contar historia longa. Enquanto isso, acompanha com os olhos um movimento que vai de um lado para o outro.</p>
+<p class="ch">Por que funciona: Quando algo assustador acontece, o cérebro as vezes salva essa memória como se ainda estivesse acontecendo. O movimento dos olhos ajuda o cérebro a revisar essa memória, perceber que ela e do passado e desligar o alarme. E como assistir a um filme antigo em vez de estar dentro dele.</p>
+<h3 class="ch">2 FASE - DESCONDICIONAR</h3>
+<p class="ch">O que fazemos: Ensinamos o cérebro a parar de reagir automáticamente. Mesmo quando a memória ja não doi, o cérebro pode ter aprendido um costume: ficar ansioso, travar, achar que vai dar errado. Isso é um habito do cérebro, não e você escolhendo.</p>
+<p class="ch">Por que funciona: Os movimentos lentos ajudam o cérebro a desmontar esse padrao automático e criar liberdade de resposta.</p>
+<h3 class="ch">3 FASE - DIRECIONAR</h3>
+<p class="ch">O que fazemos: Agora que não tem mais alarme nem habito antigo, ajudamos o cérebro a aprender: como eu quero agir daqui pra frente? Você imagina situações futuras - calmo, resolvendo, agindo diferente. Não e fingir. E treinar o cérebro enquanto ele esta livre para aprender.</p>
+<p class="ch"><strong>O que a sessão NAO e:</strong> Não e hipnose. Não e controle da mente. Não e esquecer o que aconteceu. Não e pensar positivo a forca. E so ajudar o cérebro a funcionar do jeito que ele ja sabe - mas ficou travado.</p>
+<h2 class="ch">5.16 Tempo Total de uma Sessão - Estrutura Ideal</h2>
+<table class="ch">
+<tr><th>Fase</th><th>Tempo Estimado</th></tr>
+<tr><td>Processar (dessensibilização)</td><td>20 minutos</td></tr>
+<tr><td>Descondicionar (quebra de padroes automáticos)</td><td>15 minutos</td></tr>
+<tr><td>Direcionar (instalação de recursos e ponte para o futuro)</td><td>10 minutos</td></tr>
+<tr><td><strong>SESSAO COMPLETA</strong></td><td><strong>45 minutos (media ideal)</strong></td></tr>
+</table>
+<p class="ch">As sessões iniciais (com mapeamento) podem durar ate 90 minutos. As sessões de manutencao ou check-in podem ser mais curtas.</p>
+<h2 class="ch">5.17 Fase 6 - Auditoria Terapeutica (Checklist de Alta)</h2>
+<div class="box-r"><strong>Não de alta sem passar por esta lista:</strong><br>1. Revisão da linha do tempo: cada evento deve estar com intensidade 0 ou 1.<br>2. Teste de gatilhos contextuais: deve haver neutralidade emocional ou resposta proporcional a situação real.<br>3. Verificacao de cognicoes: o cliente deve expressar crencas positivas ou, no minimo, neutras.<br>4. Teste de projecao futura: deve demonstrar confianca e clareza sobre os recursos que tem.<br>5. Varredura corporal: corpo relaxado, sem tensões localizadas associadas aos temas.</div>
+<h2 class="ch">5.18 Fase 7 - Alta e Orientacoes para o Cliente</h2>
+<h3 class="ch">1. Processamento continuo</h3>
+<p class="ch">"Nas proximas semanas, seu cérebro continuara integrando o trabalho que fizemos. E normal ter: sonhos mais vividos ou diferentes; insights espontaneos; perceber mudancas graduais na forma como reage as situações. Isso e sinal de que o processamento continua."</p>
+<h3 class="ch">2. Autocuidado</h3>
+<ul class="ch"><li>Durma o suficiente (o sono REM continua o processamento).</li><li>Beba bastante agua.</li><li>Pratique atividades que te dao prazer e paz.</li><li>Evite tomar decisões muito importantes nós primeiros dias, se possível.</li><li>Se sentir necessidade, converse com pessoas de confianca.</li></ul>
+<h3 class="ch">3. Quando retornar</h3>
+<p class="ch">"Se surgir algum desconforto emocional intenso, ou se você perceber que algum gatilho que achavamos resolvido voltou a ativar, pode retornar para sessões pontuais de reforco. Isso não significa falha - significa que ha algo novo para trabalhar ou que algo mais profundo emergiu."</p>
+<h3 class="ch">4. Manutencao (opcional)</h3>
+<p class="ch">"Sugiro que facamos um check-in após 1 mes, 3 meses e 6 meses para avaliarmos como você esta mantendo os ganhos."</p>
+<div class="yt-wrap" id="yt4" onclick="playVideo(this,'UV5TSIvDHpc')" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;margin-top:16px;cursor:pointer;background:#000;"><img src="https://img.youtube.com/vi/UV5TSIvDHpc/hqdefault.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius:10px;" /><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;background:rgba(255,0,0,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:12px 0 12px 22px;border-color:transparent transparent transparent #fff;margin-left:4px;"></div></div></div>
+<div class="done-row"><button class="btn-done" onclick="markDone(4)">Marcar como concluído</button><span class="done-hint" id="dh4">Clique ao terminar de estudar este módulo</span></div>
+</div>
+</div>
+<!-- MODULO 6 -->
+<div class="mod" id="m5">
+<div class="mod-head" onclick="tog(5)">
+  <div class="mod-n" id="n5">6</div>
+  <div class="mod-info">
+    <div class="mod-title">Doencas Psicossomáticas Especificas</div>
+    <div class="mod-meta"><span class="mtag">&#127916; ~8 min</span><span class="mtag">&#128196; Pags. 29-34</span><span class="mtag g" id="dl5" style="display:none">&#10003; Concluído</span></div>
+  </div>
+  <div class="mod-act"><span class="chev">&#8964;</span></div>
+</div>
+<div class="mod-body">
+<h2 class="ch">6.1 Sistema Digestivo - Quando as Emocoes não são Digeridas</h2>
+<p class="ch">Nosso sistema digestivo e extremamente sensivel as emoções. Por isso é chamado de <strong>segundo cérebro</strong>.</p>
+<h3 class="ch">Sindrome do Intestino Irritavel</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Ansiedade constante, perfeccionismo, medo de errar.</li><li><strong>Como funciona:</strong> Quando a pessoa fica nervosa, o intestino tem espasmos como se estivesse assustado também.</li><li><strong>Exemplo:</strong> Maria tinha diarreia sempre antes de reunioes no trabalho. Seu medo de falhar literalmente mexia com suas entranhas.</li></ul>
+<h3 class="ch">Gastrite e Ulcera</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Raiva guardada, ressentimento, preocupacao excessiva.</li><li><strong>Como funciona:</strong> O estomago produz acido em excesso que digere o próprio estomago quando a pessoa esta constantemente irritada.</li><li><strong>Exemplo:</strong> Julia guardou raiva do ex-parceiro por anos. Sua gastrite so melhorou quando aprendeu a expressar sua raiva de forma saudável.</li></ul>
+<h3 class="ch">Prisao de Ventre (Constipacao)</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Necessidade de controlar tudo, medo de soltar emoções.</li><li><strong>Como funciona:</strong> O sistema nervoso em estado de alerta constante retarda o funcionamento intestinal como mecanismo de defesa.</li><li><strong>Exemplo:</strong> Pedro, contador muito controlado, tinha prisao de ventre crônica.</li></ul>
+<h3 class="ch">Refluxo Gastroesofagico</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Dificuldade em engolir situações, palavras não ditas.</li><li><strong>Como funciona:</strong> A tensão emocional enfraquece o esfíncter esofagico, permitindo que o acido suba - como se o corpo tentasse expulsar o que não consegue digerir emocionalmente.</li><li><strong>Exemplo:</strong> Ana tinha refluxo sempre que discutia com a sogra, mas não conseguia se defender.</li></ul>
+<h2 class="ch">6.2 Sistema Respiratorio e Cardiovascular</h2>
+<h3 class="ch">Problemas Respiratorios (sinusite, bronquite, asma)</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Irritacao constante com pessoas proximas, ambiente familiar toxico, lagrimas não choradas.</li><li><strong>Como funciona:</strong> O estresse crônico inflama as mucosas das vias respiratorias, favorecendo infeccoes e reações alergicas.</li><li><strong>Exemplo:</strong> Roberto desenvolveu sinusite crônica após anos convivendo com um chefe autoritario.</li></ul>
+<h3 class="ch">Hipertensão Arterial</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Raiva contida, pressão psicológica constante, necessidade de controle.</li><li><strong>Como funciona:</strong> A raiva reprimida mantem o sistema nervoso em estado de alerta, elevando a pressão arterial de forma crônica.</li><li><strong>Exemplo:</strong> Marcos tinha pressão alta que baixava so nas ferias.</li></ul>
+<h3 class="ch">Problemas Cardiacos (arritmias, taquicardia)</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Ansiedade, sustos, conflitos emocionais fortes, medo do futuro.</li><li><strong>Como funciona:</strong> Emocoes intensas ativam o sistema nervoso simpatico, alterando o ritmo cardiaco e podendo causar arritmias ou taquicardia.</li><li><strong>Exemplo:</strong> Sandra teve arritmia após descobrir a traicao do marido. Seu coração literalmente descompassou.</li></ul>
+<h2 class="ch">6.3 Sistema Dermatológico (Pele)</h2>
+<p class="ch">A pele e nossa fronteira com o mundo. Conflitos de intimidade e proximidade frequentemente se manifestam aqui.</p>
+<h3 class="ch">Dermatite / Eczema</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Necessidade de atenção, conflitos com toque físico, irritacao com contato.</li><li><strong>Exemplo:</strong> Carla desenvolveu eczema nas mãos após casar. Inconscientemente, rejeitava o toque intimo por traumas antigos.</li></ul>
+<h3 class="ch">Psoriase</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Autorrejeicao, vergonha de si mesmo, necessidade de descascar o passado.</li><li><strong>Exemplo:</strong> Rodrigo teve psoriase após perder o emprego.</li></ul>
+<h3 class="ch">Urticaria</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Irritacao aguda com situações ou pessoas, impaciencia.</li><li><strong>Exemplo:</strong> Patricia tinha urticaria ao visitar a familia. Era alergica as criticas constantes.</li></ul>
+<h3 class="ch">Herpes Labial</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Palavras não ditas, beijos rejeitados, comúnicação bloqueada.</li><li><strong>Como funciona:</strong> O estresse emocional suprime temporariamente a imunidade local, permitindo que o virus latente se reative.</li><li><strong>Exemplo:</strong> Gustavo tinha herpes sempre que queria terminar relacionamentos, mas não conseguia falar.</li></ul>
+<h2 class="ch">6.4 Sistema Musculoesqueletico</h2>
+<h3 class="ch">Fibromialgia</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Dor emocional generalizada, sensação de carregar o mundo nas costas.</li><li><strong>Como funciona:</strong> O sistema nervoso central em hipervigilancia amplifica os sinais de dor, espalhando-a por todo o corpo.</li><li><strong>Exemplo:</strong> Marcia, cuidadora da mae com Alzheimer, desenvolveu fibromialgia.</li></ul>
+<h3 class="ch">Dores nas Costas</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Excesso de responsabilidades, falta de apoio emocional.</li><li><strong>Exemplo:</strong> Paulo, pai solteiro de tres filhos, tinha dor crônica nas costas. Melhorou quando aprendeu a pedir ajuda.</li></ul>
+<h3 class="ch">Artrite Reumatoide</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Autocritica severa, rigidez mental, perfeccionismo.</li><li><strong>Exemplo:</strong> Dona Maria, professora muito exigente consigo mesma, desenvolveu artrite.</li></ul>
+<h3 class="ch">Tensão Muscular (cervicalgia, ombros tensos)</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Teimosia, resistencia a mudancas, pescoco duro.</li><li><strong>Como funciona:</strong> A rigidez emocional se traduz em rigidez física - os musculos do pescoco e ombros contraem para segurar emoções não expressas.</li><li><strong>Exemplo:</strong> Alberto tinha torcicolo crônico. Era conhecido por ser teimoso e nunca mudar de opiniao.</li></ul>
+<h2 class="ch">6.5 Sistema Nervoso e Endocrino</h2>
+<h3 class="ch">Insonia</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Preocupacao excessiva, necessidade de controle, medo do inconsciente.</li><li><strong>Como funciona:</strong> O sistema nervoso em hiperativacao mantem o cortisol elevado a noite, impedindo a transicao para o sono profundo.</li><li><strong>Exemplo:</strong> Ricardo não dormia desde que assumiu a empresa da familia.</li></ul>
+<h3 class="ch">Vertigem / Tontura</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Perda de referencias na vida, desorientação emocional.</li><li><strong>Exemplo:</strong> Claudia teve vertigem após a morte do marido. Perdeu literalmente o chao.</li></ul>
+<h3 class="ch">Diabetes Tipo 2</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Falta de docura na vida, amargura, depressão.</li><li><strong>Como funciona:</strong> O cortisol elevado crônicamente eleva a glicemia e gera resistencia a insulina ao longo do tempo.</li><li><strong>Exemplo:</strong> Seu Jose desenvolveu diabetes após apósentadoria forcada.</li></ul>
+<h3 class="ch">Hipotireoidismo</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Desanimo, sensação de vida lenta, depressão.</li><li><strong>Como funciona:</strong> O estresse crônico suprime o eixo hipotalamo-hipofise-tireoide, reduzindo a produção dos hormonios tireoidianos.</li><li><strong>Exemplo:</strong> Vera desenvolveu hipotireoidismo durante depressão pos-divorcio.</li></ul>
+<h2 class="ch">6.6 Sistema Geniturinario e Imunológico</h2>
+<h3 class="ch">Problemas Urinarios (cistite de repetição)</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Raiva contida, especialmente contra parceiros, irritacao sexual.</li><li><strong>Exemplo:</strong> Sonia tinha cistite sempre após discussoes com o marido.</li></ul>
+<h3 class="ch">Problemas Sexuais (impotencia, falta de desejo)</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Medo de intimidade, ansiedade de performance, traumas sexuais.</li><li><strong>Como funciona:</strong> A ansiedade ativa o sistema nervoso simpatico (luta ou fuga), que inibe o parassimpatico - necessário para a excitacao sexual.</li><li><strong>Exemplo:</strong> Antonio desenvolveu impotencia após traicao da esposa.</li></ul>
+<h3 class="ch">Problemas de Fertilidade (psicogenica)</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Medo inconsciente da maternidade/paternidade, conflitos com os próprios pais.</li><li><strong>Exemplo:</strong> Um casal tentava engravidar ha 5 anos sem causa física. Ambos tinham medo de repetir padroes familiares disfuncionais.</li></ul>
+<h3 class="ch">Problemas Imunológicos</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Confusao mental, sobrecarga emocional, necessidade de parar.</li><li><strong>Como funciona:</strong> O estresse crônico suprime a resposta imunológica, deixando o organismo vulneravel a infeccoes e doencas autoimunes.</li><li><strong>Exemplo:</strong> Marina pegava resfriado todo mes. Era a única forma que seu corpo encontrava de forca-la a descansar.</li></ul>
+<h2 class="ch">6.7 Transtornos Alimentares</h2>
+<h3 class="ch">Obesidade</h3>
+<ul class="ch"><li><strong>Causa emocional:</strong> Necessidade de proteção emocional, vazio afetivo, medo de intimidade.</li><li><strong>Como funciona:</strong> O cortisol elevado pelo estresse crônico estimula o apetite é o acumulo de gordura abdominal; comer torna-se uma regulação emocional involuntaria.</li><li><strong>Exemplo:</strong> Lucia engordou 30 kg após abuso sexual. Inconscientemente, criou uma barreira física para se proteger.</li></ul>
+<div class="yt-wrap" id="yt5" onclick="playVideo(this,'RzvwZveySEk')" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;margin-top:16px;cursor:pointer;background:#000;"><img src="https://img.youtube.com/vi/RzvwZveySEk/hqdefault.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius:10px;" /><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;background:rgba(255,0,0,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:12px 0 12px 22px;border-color:transparent transparent transparent #fff;margin-left:4px;"></div></div></div>
+<div class="done-row"><button class="btn-done" onclick="markDone(5)">Marcar como concluído</button><span class="done-hint" id="dh5">Clique ao terminar de estudar este módulo</span></div>
+</div>
+</div>
+
+<!-- MODULO 7 -->
+<div class="mod" id="m6">
+<div class="mod-head" onclick="tog(6)">
+  <div class="mod-n" id="n6">7</div>
+  <div class="mod-info">
+    <div class="mod-title">Orientacoes Eticas e Profissionais</div>
+    <div class="mod-meta"><span class="mtag">&#127916; ~8 min</span><span class="mtag">&#128196; Pags. 34-38</span><span class="mtag g" id="dl6" style="display:none">&#10003; Concluído</span></div>
+  </div>
+  <div class="mod-act"><span class="chev">&#8964;</span></div>
+</div>
+<div class="mod-body">
+<h2 class="ch">7.1 Riscos da Atuação e Como Preveni-los</h2>
+<table class="ch">
+<tr><th>Risco</th><th>Descrição</th><th>Como prevenir</th></tr>
+<tr><td>Retraumatizacao</td><td>O cliente revive o trauma com a mesma intensidade, sem conseguir processar, podendo piorar.</td><td>Sempre comece pelo evento raiz; respeite o ritmo; interrompa se houver sinais de dissociação ou panico; use grounding.</td></tr>
+<tr><td>Dissociação</td><td>Cliente se desliga, fica ausente, olhar vazio.</td><td>Pare imediatamente; reoriente com estimulos sensoriais (5-4-3-2-1); não prossiga ate estar presente.</td></tr>
+<tr><td>Crise emocional aguda</td><td>Choro convulsivo, tremor, desespero, taquicardia intensa.</td><td>Pare; acolha; use respiracao e ancoragem; se não estabilizar em poucos minutos, encerre a sessão.</td></tr>
+<tr><td>Falsa memória</td><td>Cliente pode criar memórias se o terapeuta fizer perguntas sugestivas.</td><td>Nunca induza ou sugira cenas; use perguntas abertas; não valide como fato histórico.</td></tr>
+<tr><td>Dependencia emocional</td><td>Cliente transfere para o terapeuta a figura de salvador.</td><td>Mantenha postura profissional; estabeleca limites claros; estimule autonomia.</td></tr>
+<tr><td>Atuação além da competencia</td><td>Tratar condições que exigem equipe multidisciplinar.</td><td>Conheca suas limitacoes; tenha uma lista de profissionais para encaminhamento.</td></tr>
+</table>
+<h2 class="ch">7.2 Maturidade Emocional do Terapeuta - A Base de Tudo</h2>
+<p class="ch">Aplicar RCI exige mais do que conhecimento técnico: exige <strong>maturidade emocional</strong>. Você sera depositario de dores, medos e segredos.</p>
+<div class="box-t">Antes de atender qualquer pessoa, e FORTEMENTE RECOMENDADO que você passe pelo processo RCI com um profissional experiente. Isso garante: você conhece na pele como e ser cliente; identifica seus próprios gatilhos e pontos sensiveis; percebe como reage emocionalmente durante o processamento; vive o metodo e pode falar com propriedade sobre ele.</div>
+<h3 class="ch">Sinais de alerta na sua prática</h3>
+<ul class="ch"><li>Irritabilidade frequente após sessões &rarr; Busque supervisão ou terapia; reduza o número de atendimentos.</li><li>Sono perturbado (insonia, pesadelos) &rarr; Pratique higiene do sono; considere apoio psicológico.</li><li>Dificuldade de se desligar dos casos &rarr; Crie rituais de encerramento (banho, meditacao, caminhada).</li><li>Vontade de salvar o cliente &rarr; Revisite seus limites; lembre-se: o protagonista é o cliente.</li><li>Cansaco extremo ou desanimo &rarr; Reduza a agenda; descanse; busque supervisão.</li></ul>
+<h3 class="ch">Autocuidado obrigatório</h3>
+<ul class="ch"><li>Mantenha sua própria terapia em dia.</li><li>Estabeleca limites: não atenda mais de 4-5 sessões de reprocessamento por dia.</li><li>Pratique atividades que regenerem: natureza, exercicios, hobbies, espiritualidade.</li><li>Participe de grupos de supervisão ou estudo com pares.</li></ul>
+<h2 class="ch">7.3 Aspectos Legais e Registro Profissional</h2>
+<p class="ch">No Brasil, a terapia holistica e reconhecida como ocupacao pela Classificacao Brasileira de Ocupacoes (CBO) sob o código <strong>3221-35 (Terapeuta Holistico)</strong>. Não ha regulamentação federal que exija registro em conselho profissional, como ocorre com psicologos (CRP) ou medicos (CRM).</p>
+<h3 class="ch">Registro profissional (opcional, mas recomendado)</h3>
+<ul class="ch"><li><strong>ABRATH</strong> - Associação Brasileira de Terapias Holisticas: Oferece registro e carteirinha de terapeuta holistico, além de código de etica próprio.</li><li>Sindicato dos Terapeutas Holisticos do seu estado.</li><li>Cadastro Municipal/Estadual: Em algumas cidades, é necessário alvara de funcionamento para atender em consultorio.</li></ul>
+<h3 class="ch">Documentacao e contratos</h3>
+<ul class="ch"><li><strong>Ficha de Anamnese:</strong> Dados pessoais, histórico de saude, uso de medicação, contraindicações. Espaco para registro das sessões. Assinatura do cliente.</li><li><strong>Termo de Consentimento Livre e Esclarecido:</strong> O que é o RCI, como funciona, possíveis reações. Que não substitui acompanhamento medico ou psicológico. Que o cliente pode interromper a qualquer momento.</li><li><strong>Contrato de Prestacao de Servicos:</strong> Valor da sessão, forma de pagamento, politica de cancelamento. Número estimado de sessões. Compromisso de sigilo (com excecoes legais).</li></ul>
+<h2 class="ch">7.4 Questoes Fiscais e Responsabilidade Civil</h2>
+<p class="ch">Como autônomo, você deve emitir Recibo de Pagamento a Autônomo (RPA) ou Nota Fiscal de Servico (se tiver inscricao municipal). Consulte um contador para orientação sobre impostos (INSS, ISS, IRPF) conforme sua receita. Mantenha registros organizados de todos os atendimentos.</p>
+<p class="ch"><strong>Responsabilidade civil:</strong> Você responde civilmente por danos causados a terceiros no exercicio da atividade. Jamais ultrapasse os limites da técnica. Encaminhe casos que fujam da sua alcada.</p>
+<h2 class="ch">7.5 Os 4 Pilares da Prática Etica</h2>
+<ul class="ch"><li><strong>Sigilo:</strong> As informações do cliente são confidenciais (com excecoes legais).</li><li><strong>Competencia:</strong> Atue apenas dentro dos limites da sua formação.</li><li><strong>Limites:</strong> Relacionamentos claros, sem duplos vinculos.</li><li><strong>Autocuidado:</strong> Terapeuta saudável cuida melhor do cliente.</li></ul>
+<h2 class="ch">7.6 Consideracoes Finais - O Privilegio de Ser Terapeuta</h2>
+<p class="ch">Chegamos ao final deste manual. Mas sua jornada como terapeuta RCI esta apenas comecando. O RCI é uma dadiva terapêutica quando aplicado com responsabilidade, amor e técnica. Você tera o privilegio de:</p>
+<ul class="ch"><li>Testemunhar pessoas se libertando de dores que carregavam por decadas.</li><li>Ver sintomas físicos desaparecerem quando a emoção e processada.</li><li>Acompanhar a transformação de vidas, relacionamentos, carreiras.</li><li>Ser um fácilitador do encontro da pessoa com sua própria cura.</li></ul>
+<div class="box-t">O cliente é o protagonista da sua historia. Você e apenas um fácilitador. A cura ja esta dentro dele - você so ajuda a remover os bloqueios. Sua ferramenta mais importante e você mesmo: sua presenca, sua escuta, sua estabilidade emocional. Continue aprendendo. Busque supervisão. Cuide de si.<br><br>O mundo precisa de terapeutas como você. Milhoes de pessoas sofrem silenciosamente, presas em gatilhos que nem sabem que existem. Você agora tem uma ferramenta poderosa, baseada na ciencia, para ajuda-las. Use-a com sabedoria, com etica, com compaixao.<br><br><em>Bem-vindo a jornada. Que ela seja abundante e transformadora - para você e para todos que você atender.</em></div>
+<div class="yt-wrap" id="yt6" onclick="playVideo(this,'GmpGBLrjFyI')" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;margin-top:16px;cursor:pointer;background:#000;"><img src="https://img.youtube.com/vi/GmpGBLrjFyI/hqdefault.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius:10px;" /><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;background:rgba(255,0,0,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:12px 0 12px 22px;border-color:transparent transparent transparent #fff;margin-left:4px;"></div></div></div>
+<div class="done-row"><button class="btn-done" onclick="markDone(6)">Marcar como concluído</button><span class="done-hint" id="dh6">Clique ao terminar de estudar este módulo</span></div>
+</div>
+</div>
+
+<!-- MODULO 8 -->
+<div class="mod" id="m7">
+<div class="mod-head" onclick="tog(7)">
+  <div class="mod-n" id="n7">8</div>
+  <div class="mod-info">
+    <div class="mod-title">Capítulo Especial: RCI para Criancas</div>
+    <div class="mod-meta"><span class="mtag">&#127916; ~8 min</span><span class="mtag">&#128196; Pags. 38-45</span><span class="mtag g" id="dl7" style="display:none">&#10003; Concluído</span></div>
+  </div>
+  <div class="mod-act"><span class="chev">&#8964;</span></div>
+</div>
+<div class="mod-body">
+<h2 class="ch">8.1 Por que as Criancas Precisam de uma Abordagem Especial?</h2>
+<p class="ch">As criancas não são adultos em miniatura. O cérebro infantil esta em pleno desenvolvimento, é a forma como elas sentem, expressam e processam emoções e muito diferente da dos adultos.</p>
+<h3 class="ch">Como as criancas vivenciam o trauma</h3>
+<ul class="ch"><li><strong>Atraves do corpo:</strong> Muitas vezes, a crianca não diz estou triste, mas reclama de dor de barriga, dor de cabeca, cansaco. O corpo fala pelas emoções.</li><li><strong>Atraves do comportamento:</strong> Pode ficar agressiva, agitada, ou ao contrario, muito quieta, isolada. Pode regredir (voltar a fazer xixi na cama, chupar dedo, falar como bebe).</li><li><strong>Atraves das brincadeiras:</strong> Repete cenas do trauma nas brincadeiras, como se estivesse tentando entender o que aconteceu.</li><li><strong>Atraves dos desenhos:</strong> Desenha monstros, cores escuras, cenas assustadoras.</li></ul>
+<div class="box-t">Para funcionar com criancas, precisamos falar a <strong>linguagem delas</strong>: a linguagem do brincar, do desenho, da fantasia, do faz de conta. O cérebro infantil e extremamente plastico - tem enorme capacidade de se reorganizar e curar.</div>
+<h2 class="ch">8.2 Avaliando se a Crianca Esta Pronta para o RCI</h2>
+<table class="ch">
+<tr><th>Capacidade</th><th>O que significa</th><th>Como avaliar</th></tr>
+<tr><td>Atenção</td><td>Consegue prestar atenção em uma atividade por alguns minutos?</td><td>Observe se ela brinca concentrada, se assiste a um desenho sem se distrair.</td></tr>
+<tr><td>Linguagem</td><td>Consegue nomear emoções básicas? (feliz, triste, com medo, com raiva)</td><td>Pergunte: Como você esta se sentindo hoje?</td></tr>
+<tr><td>Comúnicação</td><td>Consegue contar o que aconteceu em uma historia simples?</td><td>Peca para ela contar sobre o dia dela ou sobre um filme que gostou.</td></tr>
+<tr><td>Diferenciacao realidade/fantasia</td><td>Entende que algumas coisas são reais e outras são de mentirinha?</td><td>Criancas muito pequenas (ate 4-5 anos) podem confundir.</td></tr>
+<tr><td>Seguir instruções simples</td><td>Consegue fazer o que você pede?</td><td>Peca algo como: Aponta para a janela ou Bate palmas.</td></tr>
+<tr><td>Interesse em participar</td><td>Ela quer estar ali? Não esta sendo forcada?</td><td>Observe se ela parece a vontade ou resistente.</td></tr>
+</table>
+<p class="ch"><strong>Idade recomendada:</strong> Com adaptacoes, podemos atender criancas a partir de 5-6 anos, mas o protocolo ideal e mais seguro comeca a partir dos 7-8 anos. Se a crianca for muito pequena (menos de 5 anos) ou não tiver as capacidades acima, o trabalho deve ser feito com os pais.</p>
+<h2 class="ch">8.3 Adaptacoes Gerais para Trabalhar com Criancas</h2>
+<h3 class="ch">1. O Ambiente</h3>
+<ul class="ch"><li>Colorido e acolhedor: Tenha almofadas, tapete, brinquedos, papeis e lapis de cor a disposição.</li><li>Altura da crianca: Sente-se no chao ou em cadeiras do tamanho dela. Fique no mesmo nível.</li><li>Sem pressa: Reserve um tempo maior para a crianca se sentir segura. A primeira sessão pode ser so de brincadeira e conversa.</li></ul>
+<h3 class="ch">2. A Linguagem</h3>
+<ul class="ch"><li>Trauma / memória ruim &rarr; <strong>uma lembranca que machuca</strong> ou <strong>um desenho triste na cabeca</strong></li><li>Sistema nervoso &rarr; <strong>o cérebro é o corpo</strong></li><li>Gatilho &rarr; <strong>um botaozinho que aperta e faz a gente sentir medo de novo</strong></li><li>Reprocessar &rarr; <strong>deixar a lembranca mais fraquinha, igual quando a pilha do brinquedo acaba</strong></li><li>Recurso positivo &rarr; <strong>um superpoder</strong> ou <strong>uma armadura magica</strong></li></ul>
+<h3 class="ch">3. As Ferramentas</h3>
+<ul class="ch"><li><strong>Escala de intensidade para criancas:</strong> Em vez de números, use desenhos de carinhas ou um termometro das emoções: Verde (calmo) &rarr; Amarelo (um pouco preocupado) &rarr; Laranja (nervoso) &rarr; Vermelho (muito assustado).</li><li><strong>Localização corporal:</strong> Use um desenho de corpo (menino/menina) e peca para a crianca pintar ou colar um adesivo onde ela sente a emoção.</li><li><strong>Linha do tempo:</strong> Desenhe uma estrada ou uma trilha no papel, com casinhas ou marcos a cada 5 anos.</li></ul>
+<h2 class="ch">8.4 Metaforas Ludicas para Explicar o RCI a Crianca</h2>
+<h3 class="ch">O Monstro das Preocupacoes</h3>
+<div class="box-t">Imagine que dentro da gente tem um monstro das preocupacoes. Quando alguma coisa ruim acontece, o monstro acorda e fica gritando: CUIDADO! PERIGO! So que as vezes o monstro continua gritando mesmo depois que o perigo ja passou. Ai a gente fica com medo sem precisar. Nosso trabalho e acalmar o monstro, para ele dormir de novo.</div>
+<h3 class="ch">A Caixa de Lembrancas</h3>
+<div class="box-t">Nossa cabeca é como uma caixa de lembrancas. Tem lembrancas boas, que a gente gosta de guardar. E tem lembrancas ruins, que doem quando a gente pega. A gente vai arrumar a caixa, colocar cada lembranca no lugar certo e fechar bem a tampinha das que doem.</div>
+<h3 class="ch">O Filme Antigo</h3>
+<div class="box-t">Quando a gente lembra de uma coisa ruim, é como se estivesse passando um filme na nossa cabeca. A gente vai transformar esse filme em um filme bem antigo, em preto e branco, que a gente sabe que ja passou e não esta acontecendo mais.</div>
+<h2 class="ch">8.5 Movimentos Bilaterais com Criancas - Adaptacoes</h2>
+<ul class="ch"><li>Seguir um objeto atrativo: Use um dedoche (fantoche de dedo) de um bichinho, ou uma varinha com uma estrela ou um brinquedo pequeno pendurado.</li><li>Movimentos com as mãos da crianca: Peca para a crianca bater palmas alternadas (bate uma mão, depois a outra) enquanto pensa na lembranca. Ou tocar alternadamente nós joelhos.</li><li>Movimentos tateis (tapinhas): Você pode dar tapinhas suaves e alternados nas mãos da crianca ou nós ombros. Especialmente útil para criancas muito pequenas ou com dificuldade de atenção visual.</li><li>Andar ou balancar: Pedir para a crianca andar devagar, alternando os passos enquanto pensa na lembranca. Ou sentar em uma cadeira de balanco.</li></ul>
+<p class="ch"><strong>Velocidade:</strong> Rapido (1 movimento por segundo) para diminuir o peso da lembranca ruim. Lento (2 segundos por movimento) para instalar o superpoder. <strong>Duracao das series:</strong> Comece com 10 a 15 segundos e va aumentando conforme a crianca se acostuma.</p>
+<h2 class="ch">8.6 Passo a Passo do RCI Adaptado para Criancas</h2>
+<p class="ch">Duracao total: <strong>30 a 40 minutos</strong>. Flexibilidade total: se a crianca estiver cansada ou desinteressada, pare e brinque um pouco.</p>
+<h2 class="ch">8.7 Fase 1 - Acolhimento e Identificação do Problema</h2>
+<div class="box-t">Oi [nome da crianca]! Hoje a gente vai brincar de uma coisa diferente. Sabe quando a gente tem um problema que parece um no na garganta ou um aperto no peito? Eu vou te ajudar a desfazer esse no. Mas primeiro, quero que você me conte: tem alguma coisa que te deixa triste, com medo ou com raiva?</div>
+<p class="ch">Se a crianca não falar: Use desenhos (Que tal você desenhar o que esta te incomodando?) ou fantoches (O ursinho esta querendo saber o que você sente...).</p>
+<h2 class="ch">8.8 Fase 2 - Construcao da Linha do Tempo (A Estrada da Vida)</h2>
+<p class="ch"><strong>Material:</strong> Papel grande, lapis de cor, adesivos.</p>
+<p class="ch">Vamos desenhar a estrada da sua vida. Aqui é o comeco, quando você nasceu. E aqui e hoje. No meio, a gente vai colocando as coisas importantes que aconteceram.</p>
+<p class="ch">Para cada pedaco (de 5 em 5 anos): Entre [idade] e [idade], você lembra de alguma coisa que te deixou triste, com medo ou com raiva?</p>
+<h2 class="ch">8.9 Fase 3 - Dessensibilização com Movimentos (Usando Metaforas)</h2>
+<div class="box-t">Agora a gente vai fazer uma magica. Você vai pensar naquela lembranca ruim e ao mesmo tempo vai fazer um movimento com os olhos (ou com as mãos). Isso vai ajudar o monstro das preocupacoes a ficar mais fraquinho, ate ele dormir. Combinado?</div>
+<p class="ch">Parou. Respira fundo comigo: inspira... solta... Depois: O que aconteceu? O que você viu, sentiu ou pensou agora?</p>
+<p class="ch">Repita ate chegar na carinha mais calma ou ate estabilizar.</p>
+<h2 class="ch">8.10 Fase 4 - Instalação do Superpoder (Crenca Positiva)</h2>
+<p class="ch">Agora que o monstro dormiu, a gente vai colocar um superpoder no lugar. Se antes você pensava que era medroso, o que você gostaria de pensar sobre você mesmo? Qual seria o seu superpoder?</p>
+<p class="ch">Ajude a crianca a encontrar uma frase positiva: Eu sou corajoso. Eu posso ficar calmo. Eu sou forte. Eu sou amado. Eu consigo.</p>
+<p class="ch">Pode usar desenho: Desenha você com esse superpoder! Que cor ele tem? Ele brilha? Onde ele fica?</p>
+<p class="ch">Instalação com movimentos lentos: Faca 4 a 6 movimentos lentos.</p>
+<h2 class="ch">8.11 Fase 5 - Ponte para o Futuro (Brincando de E se...)</h2>
+<p class="ch">Imagina que amanha você vai para a escola, e acontece aquela coisa que antes te deixava com medo. Agora, com seu superpoder, como você vai ser? O que você vai fazer?</p>
+<p class="ch">Ajude a visualizar: Onde você esta? Tem alguem perto? Como você esta se sentindo? Onde no corpo você sente essa forca?</p>
+<p class="ch">Instale com movimentos lentos: Mais 4-6 movimentos lentos.</p>
+<h2 class="ch">8.12 Fase 6 - Auditoria (Vamos Ver se Ficou Bem)</h2>
+<p class="ch">Vamos dar uma olhada na nossa estrada da vida. Todas aquelas coisinhas ruins... como elas estao agora?</p>
+<h2 class="ch">8.13 Fase 7 - Alta e Orientacoes (Com a Crianca e os Pais)</h2>
+<div class="box-t">Parabens! Você aprendeu a acalmar o monstro das preocupacoes. Agora você sabe que, se ele acordar de novo, você pode usar seu superpoder. E se precisar, pode voltar aqui para a gente treinar mais, combinado?</div>
+<h3 class="ch">Para os pais (em separado)</h3>
+<ul class="ch"><li>A crianca pode ter sonhos diferentes nós proximos dias - é normal.</li><li>Pode ficar mais sensivel ou mais calma - o cérebro esta processando.</li><li>Incentivem a crianca a usar o superpoder e validem as emoções dela.</li><li>Se notarem algo preocupante (muita agitacao, tristeza profunda), entrem em contato.</li></ul>
+<h2 class="ch">8.14 Cuidados Especiais com Criancas</h2>
+<h3 class="ch">Envolvimento dos pais</h3>
+<ul class="ch"><li>Sempre tenha o consentimento dos pais ou responsáveis por escrito.</li><li>Na primeira sessão, explique a técnica a eles (de forma simples) e alinhe expectativas.</li><li>Estabeleca desde o inicio o que sera compartilhado com os pais (o progresso, mas não os detalhes intimos, a menos que haja risco).</li></ul>
+<h3 class="ch">Sinais de alerta durante a sessão</h3>
+<ul class="ch"><li>Desregulação intensa: choro incontrolavel, tremores, agitacao extrema &rarr; PARE, acolha, use grounding.</li><li>Dissociação: olhar vago, não responde, parece longe &rarr; PARE, use estimulos tateis suaves, chame pelo nome, ofereça água. Não prossiga.</li><li>Recusa em continuar: Respeite sempre. Tudo bem, a gente para por aqui. Você quer desenhar um pouco?</li></ul>
+<h3 class="ch">Quando não aplicar RCI em criancas</h3>
+<ul class="ch"><li>Suspeita de abuso ativo: Você tem obrigacao legal de denunciar ao Conselho Tutelar. Não faca reprocessamento - primeiro, proteja a crianca.</li><li>Transtornos psiquiatricos graves: Psicose infantil, autismo severo sem comúnicação - requerem equipe multidisciplinar.</li><li>Crianca muito pequena (menos de 5 anos): Prefira trabalho com os pais.</li></ul>
+<h2 class="ch">8.15 Exemplo Clinico - Pedro, 9 Anos</h2>
+<p class="ch"><strong>Queixa:</strong> Medo de escuro, não consegue dormir sozinho, pesadelos frequentes. Comecou ha 6 meses, após os pais se separarem.</p>
+<table class="ch">
+<tr><th>Idade</th><th>Evento</th><th>Observação</th></tr>
+<tr><td>9 anos</td><td>Separação dos pais, medo de escuro</td><td>Intensidade alta</td></tr>
+<tr><td>5-6 anos</td><td>Avo morreu, lembra do velorio com medo na epoca</td><td></td></tr>
+<tr><td>4 anos</td><td>Caiu da cama e machucou, lembra do escuro do quarto</td><td></td></tr>
+<tr><td>2 anos (info da mae)</td><td>Ficou internado uma noite no hospital sem a mae</td><td><strong>Evento raiz - sensação de abandono no escuro</strong></td></tr>
+</table>
+<h3 class="ch">Trabalho realizado</h3>
+<ul class="ch"><li>Evento do hospital (2 anos): Com movimentos oculares usando um fantoche de macaco, após 4 series, a intensidade foi para 0.</li><li>Morte da avo (6 anos): 2 series, zerou.</li><li>Queda da cama (4 anos): 1 serie, zerou.</li><li>Separação dos pais (atual): 3 series, zerou.</li></ul>
+<p class="ch"><strong>Instalação:</strong> Superpoder escolhido: Eu sou corajoso, a luz mora em mim. Pedro desenhou um escudo brilhante no peito. Instalação com movimentos lentos.</p>
+<p class="ch"><strong>Resultado:</strong> Após 4 sessões, Pedro dormia na própria cama, sem medo. Pesadelos cessaram. Mae relatou que ele estava mais confiante.</p>
+<h2 class="ch">8.16 Exercicios e Atividades para Criancas (Entre as Sessões)</h2>
+<ul class="ch"><li><strong>Diario do Superpoder:</strong> Caderno onde a crianca desenha ou escreve situações em que usou a coragem/calma.</li><li><strong>Desenho do Monstro:</strong> Desenhar o monstro das preocupacoes e depois desenhar ele dormindo ou pequenininho.</li><li><strong>Caixa das Lembrancas:</strong> Uma caixa decorada onde a crianca pode guardar desenhos de lembrancas que ja não doem mais.</li><li><strong>Respiracao da Borboleta:</strong> Inspira e, ao expirar, bate as mãos abertas como asas de borboleta, bem devagar.</li><li><strong>Mapa do Corpo:</strong> Colorir num desenho do corpo onde sente as emoções boas e onde sentia as ruins (agora em branco).</li></ul>
+<h2 class="ch">8.17 Consideracoes Finais sobre RCI Infantil</h2>
+<ul class="ch"><li>A crianca e sua parceira na brincadeira. Se ela não estiver se divertindo ou se sentindo segura, a técnica não funciona.</li><li>Adapte-se ao ritmo dela. Uma sessão pode durar 20 minutos ou 50 - o que importa é a qualidade da presenca.</li><li>Use criatividade. Cada crianca e única: algumas vão adorar desenhar, outras preferem fantoches, outras querem contar historias.</li><li>Nunca force uma crianca a falar ou a processar algo que ela não quer. O não dela e sagrado.</li><li>Comemore cada pequena vitoria. Para uma crianca, deixar de sentir medo de dormir é uma conquista gigante.</li></ul>
+<div class="box-t">Você não esta apenas tratando um sintoma - esta ajudando a formar um adulto mais saudável, confiante e emocionalmente inteligente.</div>
+<h2 class="ch">Referencias Cientificas Fundamentais</h2>
+<ol class="ch">
+<li>Van der Kolk, B. (2014). O Corpo Guarda as Marcas. - Sobre como o trauma fica registrado no corpo.</li>
+<li>LeDoux, J. (1996). The Emotional Brain. - Sobre o papel da amigdala no medo e trauma.</li>
+<li>Nader, K. (2000). Estudo sobre reconsolidação de memórias.</li>
+<li>Stickgold, R. (2002). Sobre a conexao entre sono REM e processamento emocional.</li>
+<li>Porges, S. (2011). A Teoria Polivagal. - Sobre o sistema nervoso autônomo e regulação emocional.</li>
+<li>Siegel, D.J. (2012). A Mente em Desenvolvimento. - Sobre a janela de tolerancia e integração neural.</li>
+<li>Teicher, M.H. (2003). Estudos sobre como traumas na infancia alteram o desenvolvimento cerebral.</li>
+<li>Bergmann, U. (2012). Sobre os mecanismos neurobiológicos da estimulação bilateral.</li>
+<li>Piaget, J. - Teoria do desenvolvimento cognitivo infantil.</li>
+<li>Erikson, E. - Estagios psicossociais do desenvolvimento.</li>
+</ol>
+<div class="yt-wrap" id="yt7" onclick="playVideo(this,'qq7qj3uo9y0')" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;margin-top:16px;cursor:pointer;background:#000;"><img src="https://img.youtube.com/vi/qq7qj3uo9y0/hqdefault.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius:10px;" /><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;background:rgba(255,0,0,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:12px 0 12px 22px;border-color:transparent transparent transparent #fff;margin-left:4px;"></div></div></div>
+<div class="done-row"><button class="btn-done" onclick="markDone(7)">Marcar como concluído</button><span class="done-hint" id="dh7">Clique ao terminar de estudar este módulo</span></div>
+</div>
+</div>
+
+<!-- CERTIFICADO -->
+<div class="cert-box">
+  <div class="cert-ico">&#127941;</div>
+  <div class="cert-title">Certificado Profissional</div>
+  <div class="cert-desc">Conclua todos os módulos e as 10 horas de prática supervisionada para emitir seu certificado de Terapeuta Integrativo RCI.</div>
+  <button class="btn-cert" id="certBtn" onclick="solicitarCertificado()">Solicitar Certificado</button>
+</div>
+</div><!-- fim main -->
+
+<footer>2026 <span>Gioia Renova</span> - Willians Gioia - Terapeuta Integrativo e Formador RCI</footer>
+
+<script>
+var done={};
+var STORAGE_KEY='rci_progress';
+
+function saveProgress(){
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(done));}catch(e){}
+}
+function loadProgress(){
+  try{
+    var saved=localStorage.getItem(STORAGE_KEY);
+    if(saved){
+      done=JSON.parse(saved);
+      for(var i in done){
+        if(done[i]){
+          var m=document.getElementById('m'+i);
+          var n=document.getElementById('n'+i);
+          var b=m?m.querySelector('.btn-done'):null;
+          var h=document.getElementById('dh'+i);
+          var dl=document.getElementById('dl'+i);
+          if(m){m.classList.add('done');}
+          if(n){n.textContent='✓';}
+          if(b){b.textContent='✓ Concluído';}
+          if(h){h.textContent='Módulo finalizado';}
+          if(dl){dl.style.display='inline';}
+        }
+      }
+      updateProgress();
+    }
+  }catch(e){}
+}
+function tog(i){
+  var m=document.getElementById('m'+i);
+  if(m.classList.contains('open')){m.classList.remove('open');}
+  else{m.classList.add('open');}
+}
+function markDone(i){
+  var m=document.getElementById('m'+i);
+  var n=document.getElementById('n'+i);
+  var b=m.querySelector('.btn-done');
+  var h=document.getElementById('dh'+i);
+  var dl=document.getElementById('dl'+i);
+  if(done[i]){
+    done[i]=false;
+    m.classList.remove('done');
+    n.textContent=i+1;
+    b.textContent='Marcar como concluído';
+    h.textContent='Clique ao terminar de estudar este módulo';
+    dl.style.display='none';
+  } else {
+    done[i]=true;
+    m.classList.add('done');
+    n.textContent='✓';
+    b.textContent='✓ Concluído';
+    h.textContent='Módulo finalizado';
+    dl.style.display='inline';
+  }
+  updateProgress();
+  saveProgress();
+}
+function updateProgress(){
+  var cnt=Object.keys(done).filter(function(k){return done[k];}).length;
+  var pct=Math.round(cnt/8*100);
+  document.getElementById('pFill').style.width=pct+'%';
+  document.getElementById('pPct').textContent=pct+'%';
+  var cb=document.getElementById('certBtn');
+  if(pct===100){cb.classList.add('on');}else{cb.classList.remove('on');}
+}
+window.addEventListener('load',loadProgress);
+function solicitarCertificado(){
+  var cb=document.getElementById('certBtn');
+  if(!cb.classList.contains('on')) return;
+  var msg=encodeURIComponent('Olá, Willians! 🎉 Concluí todos os módulos da Formação RCI e gostaria de solicitar meu Certificado de Terapeuta Integrativo. Aguardo seu retorno!');
+  window.open('https://wa.me/5522992785766?text='+msg,'_blank');
+}
+
+function playVideo(el, vid){
+  document.getElementById('ytFrame').src='https://www.youtube.com/embed/'+vid+'?autoplay=1&rel=0';
+  document.getElementById('ytModal').classList.add('active');
+}
+function closeModal(){
+  document.getElementById('ytModal').classList.remove('active');
+  document.getElementById('ytFrame').src='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+
+</script>
+</body>
+</html>
