@@ -11,17 +11,60 @@ body{min-height:100vh;display:flex;flex-direction:column;align-items:center;just
 .logo-link{display:block;width:280px;max-width:90vw;cursor:pointer;transition:transform 0.3s ease,box-shadow 0.3s ease;border-radius:50%;box-shadow:0 8px 40px rgba(42,168,160,0.4);}
 .logo-link:hover{transform:scale(1.05);box-shadow:0 12px 50px rgba(42,168,160,0.6);}
 .logo-link img{width:100%;border-radius:50%;display:block;}
-.btn{margin-top:32px;background:linear-gradient(135deg,#2aa8a0,#1d7d77);color:#fff;text-decoration:none;padding:14px 36px;border-radius:30px;font-size:15px;font-weight:600;letter-spacing:1px;box-shadow:0 4px 20px rgba(42,168,160,0.4);transition:transform 0.2s,box-shadow 0.2s;}
+.btn{margin-top:32px;background:linear-gradient(135deg,#2aa8a0,#1d7d77);color:#fff;text-decoration:none;padding:14px 36px;border-radius:30px;font-size:15px;font-weight:600;letter-spacing:1px;box-shadow:0 4px 20px rgba(42,168,160,0.4);transition:transform 0.2s,box-shadow 0.2s;border:none;cursor:pointer;}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(42,168,160,0.6);}
 .sub{color:rgba(255,255,255,0.4);font-size:12px;margin-top:16px;}
+
+.login-box{display:flex;flex-direction:column;align-items:center;text-align:center;}
+.login-box input{margin-top:24px;padding:14px 20px;border-radius:30px;border:none;font-size:15px;width:240px;max-width:80vw;text-align:center;outline:none;box-shadow:0 4px 20px rgba(0,0,0,0.2);}
+.erro{color:#ff8080;font-size:13px;margin-top:12px;min-height:18px;}
+
+.conteudo{display:none;flex-direction:column;align-items:center;}
+.conteudo.show{display:flex;}
 </style>
 </head>
 <body>
-<p class="titulo">Bem-vindo à Formação RCI</p>
-<a class="logo-link" href="https://williansjoi.github.io/formacao-rci/plataforma-rci.html" target="_blank">
-  <img src="https://williansjoi.github.io/formacao-rci/1FEC59FD-287B-4C7A-8D33-3DA2A40DB1D8.png" alt="Gioia Renova - Formação RCI">
-</a>
-<a class="btn" href="https://williansjoi.github.io/formacao-rci/plataforma-rci.html" target="_blank">▶ Acessar Plataforma</a>
-<p class="sub">Clique na imagem ou no botão para entrar</p>
+
+<div class="login-box" id="loginBox">
+  <p class="titulo">Bem-vindo à Formação RCI</p>
+  <p style="color:#fff;font-size:14px;opacity:0.85;">Digite o código de acesso fornecido</p>
+  <input type="password" id="codigoInput" placeholder="Código de acesso" autocomplete="off">
+  <button class="btn" onclick="verificarCodigo()">▶ Acessar</button>
+  <p class="erro" id="erroMsg"></p>
+</div>
+
+<div class="conteudo" id="conteudo">
+  <p class="titulo">Bem-vindo à Formação RCI</p>
+  <a class="logo-link" href="https://williansjoi.github.io/plataforma-rci/plataforma-rci.html" target="_blank">
+    <img src="https://williansjoi.github.io/plataforma-rci/1FEC59FD-287B-4C7A-8D33-3DA2A40DB1D8.png" alt="Gioia Renova - Formação RCI">
+  </a>
+  <a class="btn" href="https://williansjoi.github.io/plataforma-rci/plataforma-rci.html" target="_blank">▶ Acessar Plataforma</a>
+  <p class="sub">Clique na imagem ou no botão para entrar</p>
+</div>
+
+<script>
+var CODIGO_CORRETO = "Rci1967";
+
+function verificarCodigo(){
+  var input = document.getElementById('codigoInput').value;
+  if(input === CODIGO_CORRETO){
+    document.getElementById('loginBox').style.display = 'none';
+    document.getElementById('conteudo').classList.add('show');
+    sessionStorage.setItem('rciAcesso','ok');
+  } else {
+    document.getElementById('erroMsg').textContent = 'Código incorreto. Tente novamente.';
+  }
+}
+
+document.getElementById('codigoInput').addEventListener('keydown', function(e){
+  if(e.key === 'Enter') verificarCodigo();
+});
+
+if(sessionStorage.getItem('rciAcesso') === 'ok'){
+  document.getElementById('loginBox').style.display = 'none';
+  document.getElementById('conteudo').classList.add('show');
+}
+</script>
+
 </body>
 </html>
