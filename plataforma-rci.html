@@ -22,13 +22,6 @@ header{background:linear-gradient(135deg,#1a2332,#1d3a4a);padding:14px 20px;disp
 .stats{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
 .stat-num{color:var(--teal);font-size:22px;font-weight:700;}
 .stat-lbl{color:rgba(255,255,255,0.45);font-size:11px;text-transform:uppercase;letter-spacing:1px;}
-.topics{background:#f3fbfa;padding:24px 20px;border-bottom:1px solid #d1f0ee;}
-.topics-inner{max-width:860px;margin:0 auto;}
-.topics-title{font-size:15px;font-weight:700;color:var(--dark);margin-bottom:4px;text-align:center;}
-.topics-sub{font-size:12px;color:var(--muted);text-align:center;margin-bottom:16px;line-height:1.6;}
-.topics-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
-.topic-chip{background:#fff;border:1px solid #c9ece8;color:var(--teal-dark);font-size:12px;padding:6px 13px;border-radius:20px;line-height:1.4;}
-.topics-note{margin-top:16px;background:#fff8e1;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;font-size:12px;color:#7a5c10;line-height:1.65;}
 .prog-wrap{background:#fff;border-bottom:1px solid #d1f0ee;padding:12px 20px;}
 .prog-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;gap:12px;}
 .prog-lbl{font-size:12px;color:var(--muted);white-space:nowrap;}
@@ -117,37 +110,6 @@ footer span{color:var(--teal);}
     <div><div class="stat-num">8</div><div class="stat-lbl">Videoaulas</div></div>
     <div><div class="stat-num">45</div><div class="stat-lbl">Paginas</div></div>
     <div><div class="stat-num">10h</div><div class="stat-lbl">Prática</div></div>
-  </div>
-</div>
-<div class="topics">
-  <div class="topics-inner">
-    <div class="topics-title">Temas que podem ser trabalhados na prática do RCI</div>
-    <div class="topics-sub">A formação capacita o terapeuta a aplicar o rastreamento de gatilhos e a dessensibilização por movimentos bilaterais em diversas demandas emocionais e psicossomáticas.</div>
-    <div class="topics-grid">
-      <span class="topic-chip">Traumas</span>
-      <span class="topic-chip">Depressão</span>
-      <span class="topic-chip">Ansiedade</span>
-      <span class="topic-chip">Pânico</span>
-      <span class="topic-chip">Fobias</span>
-      <span class="topic-chip">Estresse</span>
-      <span class="topic-chip">Dependência química</span>
-      <span class="topic-chip">Transtornos alimentares</span>
-      <span class="topic-chip">Disfunções sexuais</span>
-      <span class="topic-chip">Frustrações</span>
-      <span class="topic-chip">Procrastinação</span>
-      <span class="topic-chip">Vícios</span>
-      <span class="topic-chip">Abusos</span>
-      <span class="topic-chip">Abandono</span>
-      <span class="topic-chip">Angústia</span>
-      <span class="topic-chip">Tristeza profunda</span>
-      <span class="topic-chip">Fibromialgia</span>
-      <span class="topic-chip">Solidão</span>
-      <span class="topic-chip">Sentimento de culpa</span>
-      <span class="topic-chip">Insegurança</span>
-      <span class="topic-chip">Crenças limitantes</span>
-      <span class="topic-chip">Traição ou decepção</span>
-    </div>
-    <div class="topics-note"><strong>Importante:</strong> esta formação capacita para atuação como Terapeuta Integrativo e não autoriza o exercício de profissões regulamentadas (psicologia, medicina). Casos que exijam diagnóstico ou tratamento médico/psicológico devem ser encaminhados aos profissionais competentes.</div>
   </div>
 </div>
 <div class="prog-wrap">
@@ -805,8 +767,8 @@ footer span{color:var(--teal);}
 <div class="cert-box">
   <div class="cert-ico">&#127941;</div>
   <div class="cert-title">Certificado Profissional</div>
-  <div class="cert-desc">Conclua todos os módulos e as 10 horas de prática supervisionada para emitir seu certificado de Terapeuta Integrativo RCI.</div>
-  <button class="btn-cert" id="certBtn" onclick="solicitarCertificado()">Solicitar Certificado</button>
+  <div class="cert-desc">Ao concluir todos os módulos, solicite o agendamento das suas 10 horas de prática supervisionada. Após finalizá-las, seu Certificado de Terapeuta Integrativo RCI será emitido.</div>
+  <button class="btn-cert" id="certBtn" onclick="solicitarCertificado()">Solicitar Agendamento da Prática</button>
 </div>
 </div><!-- fim main -->
 
@@ -883,7 +845,7 @@ window.addEventListener('load',loadProgress);
 function solicitarCertificado(){
   var cb=document.getElementById('certBtn');
   if(!cb.classList.contains('on')) return;
-  var msg=encodeURIComponent('Olá, Willians! 🎉 Concluí todos os módulos da Formação RCI e gostaria de solicitar meu Certificado de Terapeuta Integrativo. Aguardo seu retorno!');
+  var msg=encodeURIComponent('Olá, Willians! 🎉 Concluí todos os módulos da Formação RCI e gostaria de solicitar o agendamento das minhas 10 horas de prática supervisionada para receber meu Certificado de Terapeuta Integrativo. Aguardo seu retorno!');
   window.open('https://wa.me/5522992785766?text='+msg,'_blank');
 }
 
