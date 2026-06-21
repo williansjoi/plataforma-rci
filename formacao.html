@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formação RCI - Instituto Gioia Renova</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:#f0fafa;color:#1a2332;}
+
+/* HERO */
+.hero{
+  background:linear-gradient(160deg,#1a2332,#1d3a4a);
+  padding:40px 20px 50px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:300px;height:300px;border-radius:50%;
+  background:rgba(42,168,160,0.08);
+}
+.logo-hero{
+  width:100px;height:100px;border-radius:50%;overflow:hidden;
+  margin:0 auto 20px;
+  border:3px solid rgba(42,168,160,0.6);
+  box-shadow:0 8px 30px rgba(42,168,160,0.4);
+}
+.logo-hero img{width:100%;height:100%;object-fit:cover;display:block;}
+.hero-tag{
+  display:inline-block;
+  background:rgba(42,168,160,0.2);
+  border:1px solid rgba(42,168,160,0.4);
+  color:#5dd8d0;border-radius:20px;
+  padding:4px 16px;font-size:11px;
+  letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:16px;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(24px,6vw,36px);
+  color:#fff;line-height:1.3;
+  margin-bottom:12px;
+}
+.hero h1 span{color:#2aa8a0;}
+.hero p{
+  color:rgba(255,255,255,0.65);
+  font-size:15px;line-height:1.8;
+  max-width:380px;margin:0 auto 28px;
+}
+.btn-hero{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,#2aa8a0,#1d7d77);
+  color:#fff;text-decoration:none;
+  padding:16px 32px;border-radius:50px;
+  font-size:15px;font-weight:700;
+  box-shadow:0 6px 24px rgba(42,168,160,0.5);
+  border:none;cursor:pointer;font-family:inherit;
+}
+.btn-hero svg{width:20px;height:20px;fill:#fff;}
+
+/* SEÇÕES */
+.sec{padding:36px 20px;max-width:480px;margin:0 auto;}
+.sec-titulo{
+  font-family:'Playfair Display',serif;
+  font-size:22px;color:#1a2332;
+  margin-bottom:16px;text-align:center;
+}
+.sec-titulo span{color:#2aa8a0;}
+
+/* CARDS DE BENEFÍCIO */
+.beneficios{display:flex;flex-direction:column;gap:12px;}
+.ben{
+  background:#fff;border-radius:14px;
+  border-left:4px solid #2aa8a0;
+  padding:16px 18px;
+  box-shadow:0 2px 12px rgba(42,168,160,0.08);
+  display:flex;gap:14px;align-items:flex-start;
+}
+.ben-ico{font-size:24px;flex-shrink:0;margin-top:2px;}
+.ben-txt h3{font-size:14px;font-weight:700;color:#1a2332;margin-bottom:4px;}
+.ben-txt p{font-size:13px;color:#6b7280;line-height:1.6;}
+
+/* PARA QUEM É */
+.paraquem{background:#fff;border-radius:16px;padding:24px 20px;box-shadow:0 2px 12px rgba(42,168,160,0.08);}
+.item-pq{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;}
+.item-pq:last-child{margin-bottom:0;}
+.check{color:#2aa8a0;font-size:18px;flex-shrink:0;margin-top:1px;}
+.item-pq p{font-size:13px;color:#374151;line-height:1.6;}
+
+/* TEMAS */
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px;}
+.chips span{
+  background:#e6f7f6;border:1px solid #2aa8a0;
+  color:#1d7d77;font-size:12px;
+  padding:6px 12px;border-radius:20px;
+}
+
+/* DEPOIMENTO */
+.depo{
+  background:linear-gradient(135deg,#1a2332,#1d3a4a);
+  border-radius:16px;padding:24px 20px;
+  text-align:center;color:#fff;
+}
+.depo p{font-size:14px;line-height:1.8;color:rgba(255,255,255,0.8);font-style:italic;margin-bottom:14px;}
+.depo-autor{font-size:12px;color:#5dd8d0;font-weight:600;}
+
+/* PREÇO */
+.preco-box{
+  background:#fff;border-radius:16px;
+  box-shadow:0 4px 20px rgba(42,168,160,0.15);
+  padding:28px 20px;text-align:center;
+  border:2px solid #2aa8a0;
+}
+.preco-titulo{font-size:14px;color:#6b7280;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;}
+.preco-valor{
+  font-family:'Playfair Display',serif;
+  font-size:48px;color:#1a2332;font-weight:700;
+  margin-bottom:4px;
+}
+.preco-valor span{font-size:22px;vertical-align:top;margin-top:10px;display:inline-block;}
+.preco-inclui{font-size:13px;color:#6b7280;margin-bottom:20px;line-height:1.6;}
+.preco-inclui strong{color:#2aa8a0;}
+.btn-preco{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#25D366;color:#fff;text-decoration:none;
+  padding:16px 28px;border-radius:50px;
+  font-size:15px;font-weight:700;
+  box-shadow:0 6px 20px rgba(37,211,102,0.4);
+  border:none;cursor:pointer;font-family:inherit;
+  width:100%;justify-content:center;
+}
+.btn-preco svg{width:20px;height:20px;fill:#fff;}
+.preco-nota{font-size:11px;color:#9ca3af;margin-top:12px;}
+
+/* DIVISOR */
+.div-linha{height:1px;background:linear-gradient(90deg,transparent,#d1f0ee,transparent);margin:8px 0;}
+
+/* RODAPÉ */
+footer{
+  background:#1a2332;color:rgba(255,255,255,0.35);
+  text-align:center;padding:20px;font-size:11px;line-height:1.8;
+}
+footer span{color:#2aa8a0;}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="logo-hero">
+    <img src="677284F0-FB7E-471D-83C0-C9BF7F569CF9.png" alt="Instituto Gioia Renova">
+  </div>
+  <div class="hero-tag">Instituto Gioia Renova</div>
+  <h1>Que tal ser um<br><span>facilitador de vidas?</span></h1>
+  <p>O Instituto Gioia Renova tem a formação que você precisa para transformar dores em recomeços — com ciência, propósito e técnica.</p>
+  <a class="btn-hero" href="https://wa.me/5522992785766?text=Ol%C3%A1%21%20Tenho%20interesse%20na%20Forma%C3%A7%C3%A3o%20RCI%20do%20Instituto%20Gioia%20Renova.%20Pode%20me%20dar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Quero saber mais
+  </a>
+</div>
+
+<!-- O QUE É -->
+<div class="sec">
+  <div class="sec-titulo">O que é o <span>RCI?</span></div>
+  <p style="font-size:14px;color:#374151;line-height:1.8;text-align:center;">O Reprocessamento Cronológico Integrativo é uma metodologia terapêutica baseada na neurociência, que utiliza movimentos bilaterais visuais para ajudar o sistema nervoso a processar memórias traumáticas — liberando o que ficou preso e devolvendo equilíbrio emocional e físico ao cliente.</p>
+</div>
+
+<div class="div-linha"></div>
+
+<!-- BENEFÍCIOS -->
+<div class="sec">
+  <div class="sec-titulo">Por que se <span>formar em RCI?</span></div>
+  <div class="beneficios">
+    <div class="ben">
+      <div class="ben-ico">🧠</div>
+      <div class="ben-txt">
+        <h3>Base científica sólida</h3>
+        <p>Fundamentado na neurociência moderna, o RCI trabalha diretamente com o sistema nervoso, promovendo resultados reais e mensuráveis.</p>
+      </div>
+    </div>
+    <div class="ben">
+      <div class="ben-ico">🌿</div>
+      <div class="ben-txt">
+        <h3>Atuação profissional reconhecida</h3>
+        <p>Amparado pelo Decreto Federal nº 5.154/04 e pela LDB, você estará apto a atender como Terapeuta Integrativo — em consultório físico ou online.</p>
+      </div>
+    </div>
+    <div class="ben">
+      <div class="ben-ico">❤️</div>
+      <div class="ben-txt">
+        <h3>Transforme vidas de verdade</h3>
+        <p>Traumas que duraram décadas podem ser liberados em sessões. Você será o facilitador dessa mudança profunda.</p>
+      </div>
+    </div>
+    <div class="ben">
+      <div class="ben-ico">📱</div>
+      <div class="ben-txt">
+        <h3>Plataforma completa e online</h3>
+        <p>Estude no seu ritmo com videoaulas, material teórico e suporte do formador — tudo pelo celular ou computador.</p>
+      </div>
+    </div>
+    <div class="ben">
+      <div class="ben-ico">🏅</div>
+      <div class="ben-txt">
+        <h3>Certificado + Carteirinha profissional</h3>
+        <p>Ao concluir os módulos e as 10 horas de prática supervisionada, você recebe seu certificado e carteirinha de Terapeuta Integrativo RCI.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div-linha"></div>
+
+<!-- PARA QUEM É -->
+<div class="sec">
+  <div class="sec-titulo">Esta formação é para <span>você</span> que...</div>
+  <div class="paraquem">
+    <div class="item-pq"><div class="check">✓</div><p>Sente o chamado de ajudar pessoas que sofrem emocionalmente</p></div>
+    <div class="item-pq"><div class="check">✓</div><p>Quer uma profissão com propósito, flexibilidade e renda</p></div>
+    <div class="item-pq"><div class="check">✓</div><p>Já trabalha com saúde, coaching ou desenvolvimento humano e quer ampliar seus recursos</p></div>
+    <div class="item-pq"><div class="check">✓</div><p>Busca uma técnica séria, baseada em ciência e com resultados comprovados</p></div>
+    <div class="item-pq"><div class="check">✓</div><p>Quer atender presencialmente ou online, com liberdade de horário</p></div>
+    <div class="item-pq"><div class="check">✓</div><p>Não precisa ter faculdade — só precisa ter vontade genuína de transformar vidas</p></div>
+  </div>
+</div>
+
+<div class="div-linha"></div>
+
+<!-- TEMAS -->
+<div class="sec">
+  <div class="sec-titulo">O que você vai <span>aprender a tratar</span></div>
+  <div class="chips">
+    <span>Traumas</span><span>Depressão</span><span>Ansiedade</span><span>Pânico</span>
+    <span>Fobias</span><span>Estresse</span><span>Dependência química</span>
+    <span>Transtornos alimentares</span><span>Disfunções sexuais</span>
+    <span>Frustrações</span><span>Procrastinação</span><span>Vícios</span>
+    <span>Abusos</span><span>Abandono</span><span>Angústia</span>
+    <span>Tristeza profunda</span><span>Fibromialgia</span><span>Solidão</span>
+    <span>Sentimento de culpa</span><span>Insegurança</span>
+    <span>Crenças limitantes</span><span>Traição ou decepção</span>
+  </div>
+</div>
+
+<div class="div-linha"></div>
+
+<!-- DEPOIMENTO -->
+<div class="sec">
+  <div class="depo">
+    <p>"Nunca imaginei que em poucos meses estaria atendendo clientes e transformando vidas. O RCI me deu ferramentas que eu nunca tinha visto antes — e resultados que eu nunca esperava alcançar tão rápido."</p>
+    <div class="depo-autor">— Aluna formada pelo Instituto Gioia Renova</div>
+  </div>
+</div>
+
+<div class="div-linha"></div>
+
+<!-- PREÇO -->
+<div class="sec">
+  <div class="sec-titulo">Investimento na sua <span>nova carreira</span></div>
+  <div class="preco-box">
+    <div class="preco-titulo">Formação Completa RCI</div>
+    <div class="preco-valor"><span>R$</span> 390</div>
+    <div class="preco-inclui">
+      Inclui: <strong>certificado profissional + carteirinha de Terapeuta Integrativo RCI</strong><br>
+      8 módulos · 8 videoaulas · 10h de prática supervisionada
+    </div>
+    <a class="btn-preco" href="https://wa.me/5522992785766?text=Ol%C3%A1%21%20Quero%20me%20inscrever%20na%20Forma%C3%A7%C3%A3o%20RCI%20do%20Instituto%20Gioia%20Renova%20por%20R%24%20390%2C00.%20Como%20fa%C3%A7o%3F" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Quero me inscrever agora
+    </a>
+    <div class="preco-nota">Ao clicar, você será direcionado ao WhatsApp do Instituto Gioia Renova</div>
+  </div>
+</div>
+
+<footer>
+  2026 <span>Instituto Gioia Renova</span> · Formação RCI<br>
+  Reprocessamento Cronológico Integrativo<br>
+  Willians Gioia · Terapeuta Integrativo e Formador RCI
+</footer>
+
+</body>
+</html>
